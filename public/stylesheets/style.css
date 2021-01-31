@@ -1,7 +1,7 @@
 body {
   background-color: rgb(243, 242, 242);
-  padding: 50px;
-  font: 14px Verdana, "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 10px 30px 30px 30px;
+  font: 14px  Verdana, "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -15,9 +15,12 @@ img{
 }
 
 .title{
-  font-family: 'Tipolino';
-  font-size: 3rem;
+  font-family: 'GeosansLight', Verdana, 'Geneva';
+  font-size: 4rem;
   color:rgb(106, 206, 240);
+}
+title:a{
+  color:red;
 }
 .subtitle{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

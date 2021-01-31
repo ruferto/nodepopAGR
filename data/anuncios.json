@@ -19,14 +19,14 @@
 },{
   "nombre": "iMac",
   "venta": true,
-  "precio": 1000,
+  "precio": 1090,
   "foto": "imac.png",
   "tags": [
     "lifestyle",
     "trabajo"
   ]
 },{
-  "nombre": "Boxee",
+  "nombre": "Boxee Box",
   "venta": false,
   "precio": 50,
   "foto": "boxee.png",
@@ -56,7 +56,7 @@
 },{
   "nombre": "Tesla",
   "venta": true,
-  "precio": 900000,
+  "precio": 46000,
   "foto": "tesla.png",
   "tags": [
     "lifestyle",

@@ -7,7 +7,12 @@
     "dev": "cross-env PORT=3000 NODE_ENV=development DEBUG=nodeapi:* nodemon",
     "installDB": "node install_db.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/usuario616/IntroJavaScript.git"
+  },
   "dependencies": {
+    "axios": "^0.21.1",
     "cookie-parser": "~1.4.4",
     "cross-env": "^7.0.3",
     "debug": "~2.6.9",
