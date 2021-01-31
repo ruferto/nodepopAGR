@@ -10,13 +10,15 @@
     <div class="ads-container">
     <% anuncios.forEach( anuncio => {%>
       <div class="ad-container">
-          <%= (anuncio.venta) ? 'Se vende' : 'Se busca' %> :<br>
-          <span class="ad-title"><%= anuncio.nombre%><br></span><br>
-          <img src='../public/images/<%= anuncio.foto %>' /><br>
+          <%= (anuncio.venta) ? 'Se vende' : 'Se busca' %>:<br>
+          <span class="ad-title"><b><%= anuncio.nombre%></b></span><br>
+          <div style="height:180px;">
+            <img src="/images/<%= anuncio.foto %>" width="180" alt=<%=anuncio.foto %> /><br>
+          </div>
           Precio: <%= anuncio.precio%> €<br><br>
           <span class="tags">Etiquetas: 
             <% anuncio.tags.forEach( tag => {
-              %> <%=tag%> <%
+               %> <a href='/?tag=<%=tag%>'><%=tag%> </a><%
             })%>
           </span>
         </div>

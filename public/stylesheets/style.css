@@ -1,11 +1,12 @@
 body {
-  background-color: rgb(236, 234, 234);
+  background-color: rgb(243, 242, 242);
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px Verdana, "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  /* color: #00B7FF; */
+  text-decoration: none;
 }
 
 .ads-container{
@@ -37,8 +38,6 @@ a {
 
 .tags{
   font-size: .75rem;
-}
-
-.img{
-  width:280px;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  color:darkgray;
 }
