@@ -18,7 +18,7 @@ const anunciosJSON = [{
   "foto": "iphone.png",
   "tags": [
     "lifestyle",
-    "mobile"
+    "movil"
   ]
 },{
   "nombre": "iMac",
@@ -27,7 +27,7 @@ const anunciosJSON = [{
   "foto": "imac.png",
   "tags": [
     "lifestyle",
-    "work"
+    "trabajo"
   ]
 },{
   "nombre": "Boxee",
@@ -35,23 +35,27 @@ const anunciosJSON = [{
   "precio": 50,
   "foto": "boxee.png",
   "tags": [
-    "lifestyle"
+    "lifestyle",
+    "tv"
   ]
 },{
-  "nombre": "Xilófono",
+  "nombre": "Groo Adventurer",
   "venta": true,
-  "precio": 14,
-  "foto": "xilofono.jpg",
+  "precio": 14.5,
+  "foto": "groo.jpg",
   "tags": [
-    "lifestyle"
+    "comic",
+    "coleccionismo"
   ]
 },{
   "nombre": "Megadrive",
   "venta": false,
   "precio": 80,
-  "foto": "megadrive.png",
+  "foto": "megadrive.jpg",
   "tags": [
-    "lifestyle"
+    "lifestyle",
+    "gaming",
+    "coleccionismo"
   ]
 },{
   "nombre": "Tesla",
@@ -69,7 +73,7 @@ const anunciosJSON = [{
   "foto": "roomba.png",
   "tags": [
     "lifestyle",
-    "work"
+    "trabajo"
   ]
 },{
   "tags": [
@@ -79,28 +83,34 @@ const anunciosJSON = [{
   "nombre": "Moto",
   "precio": 1600,
   "venta": false,
-  "foto": "moto.jpg",
-  "__v": 0
+  "foto": "moto.jpg"
 },{
   "tags": [
     "lifestyle",
     "motor"
   ],
-  "nombre": "BMW",
-  "precio": 16000,
+  "nombre": "Opel Corsa",
+  "precio": 2001.8,
   "venta": true,
-  "foto": "bmw.jpg",
-  "__v": 0
+  "foto": "opelcorsa.jpg"
 },{
   "tags": [
-    "work",
+    "trabajo",
     "motor"
   ],
   "nombre": "Tractor",
   "precio": 19000,
   "venta": true,
-  "foto": "tractor.jpg",
-  "__v": 0
+  "foto": "tractor.jpg"
+},{
+  "tags": [
+    "lifestyle",
+    "decoracion"
+  ],
+  "nombre": "Lámpara",
+  "precio": 14.2,
+  "venta": true,
+  "foto": "lampara.jpg"
 }];
 
 
