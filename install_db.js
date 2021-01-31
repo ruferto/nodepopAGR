@@ -1,117 +1,17 @@
 'use strict'
 const mongoose = require('mongoose');
-//const Anuncio = require('./models/Anuncio');
 
-const anunciosJSON = [{
-  "nombre": "Bicicleta",
-  "venta": true,
-  "precio": 230.15,
-  "foto": "bici.jpg",
-  "tags": [
-    "lifestyle",
-    "motor"
-  ]
-},{
-  "nombre": "iPhone 3GS",
-  "venta": false,
-  "precio": 50,
-  "foto": "iphone.png",
-  "tags": [
-    "lifestyle",
-    "movil"
-  ]
-},{
-  "nombre": "iMac",
-  "venta": true,
-  "precio": 1000,
-  "foto": "imac.png",
-  "tags": [
-    "lifestyle",
-    "trabajo"
-  ]
-},{
-  "nombre": "Boxee",
-  "venta": false,
-  "precio": 50,
-  "foto": "boxee.png",
-  "tags": [
-    "lifestyle",
-    "tv"
-  ]
-},{
-  "nombre": "Groo Adventurer",
-  "venta": true,
-  "precio": 14.5,
-  "foto": "groo.jpg",
-  "tags": [
-    "comic",
-    "coleccionismo"
-  ]
-},{
-  "nombre": "Megadrive",
-  "venta": false,
-  "precio": 80,
-  "foto": "megadrive.jpg",
-  "tags": [
-    "lifestyle",
-    "gaming",
-    "coleccionismo"
-  ]
-},{
-  "nombre": "Tesla",
-  "venta": true,
-  "precio": 900000,
-  "foto": "tesla.png",
-  "tags": [
-    "lifestyle",
-    "motor"
-  ]
-},{
-  "nombre": "Roomba",
-  "venta": false,
-  "precio": 200,
-  "foto": "roomba.png",
-  "tags": [
-    "lifestyle",
-    "trabajo"
-  ]
-},{
-  "tags": [
-    "lifestyle",
-    "motor"
-  ],
-  "nombre": "Moto",
-  "precio": 1600,
-  "venta": false,
-  "foto": "moto.jpg"
-},{
-  "tags": [
-    "lifestyle",
-    "motor"
-  ],
-  "nombre": "Opel Corsa",
-  "precio": 2001.8,
-  "venta": true,
-  "foto": "opelcorsa.jpg"
-},{
-  "tags": [
-    "trabajo",
-    "motor"
-  ],
-  "nombre": "Tractor",
-  "precio": 19000,
-  "venta": true,
-  "foto": "tractor.jpg"
-},{
-  "tags": [
-    "lifestyle",
-    "decoracion"
-  ],
-  "nombre": "Lámpara",
-  "precio": 14.2,
-  "venta": true,
-  "foto": "lampara.jpg"
-}];
+let anunciosJSON;
+
+const fs = require('fs');
+
+fs.readFile('./data/anuncios.json', 'utf8', (err, data) => {
+    if (err) {
+        console.log(`Error al leer el archivo: ${err}`);
+    } else {
+        anunciosJSON = JSON.parse(data);
+    }
+});
 
 
 mongoose.connection.on('error', err => {
