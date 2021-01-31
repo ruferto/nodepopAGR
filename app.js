@@ -25,7 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // API
 app.use('/api/anuncios', require('./routes/api/anuncios'));
 
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 

@@ -7,5 +7,20 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <div class="ads-container">
+    <% anuncios.forEach( anuncio => {%>
+      <div class="ad-container">
+          <%= (anuncio.venta) ? 'Se vende' : 'Se busca' %> :<br>
+          <span class="ad-title"><%= anuncio.nombre%><br></span><br>
+          <img src='../public/images/<%= anuncio.foto %>' /><br>
+          Precio: <%= anuncio.precio%> €<br><br>
+          <span class="tags">Etiquetas: 
+            <% anuncio.tags.forEach( tag => {
+              %> <%=tag%> <%
+            })%>
+          </span>
+        </div>
+    <%}); %>
+    </div>
   </body>
 </html>

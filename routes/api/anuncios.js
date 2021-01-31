@@ -92,7 +92,7 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const anuncioData = req.body;
-    if(anuncioData.venta!="true" && anuncioData.venta!="true"){
+    if(anuncioData.venta!="true" && anuncioData.venta!="false"){
       return res.status(400).json({ error: 'venta debe ser "true" o "false"' });
     }
     anuncioData.venta =  (anuncioData.venta==="true")  ? true : false;

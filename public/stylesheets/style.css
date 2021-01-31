@@ -1,8 +1,44 @@
 body {
+  background-color: rgb(236, 234, 234);
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.ads-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 5px;
+}
+
+.ad-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  margin-left: 1rem;
+  padding: 1rem;
+  position: relative;
+  width: 200px;
+}
+
+.ad-title{
+  font-size: 1.1rem;
+}
+
+.tags{
+  font-size: .75rem;
+}
+
+.img{
+  width:280px;
 }
