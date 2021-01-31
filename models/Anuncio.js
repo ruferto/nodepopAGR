@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+mongoose.set('useCreateIndex', true);
 
 const anuncioSchema = mongoose.Schema({
   nombre: { type: String, index: true },
