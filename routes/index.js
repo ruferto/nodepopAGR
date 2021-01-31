@@ -10,14 +10,12 @@ router.get('/', async function(req, res, next) {
   try {
 
     const nombre = req.query.nombre;
-    const precio = req.query.precio;
+    let precio = req.query.precio;
     const id = req.query.id;
     const venta = req.query.venta;
     const tag = req.query.tag;
-    const min = parseInt(req.query.min);
-    const max = parseInt(req.query.max);
     const limit = parseInt(req.query.limit);
-    const skip = parseInt(req.query.skip);
+    const skip = parseInt(req.query.start);
     const fields = req.query.fields;
     const sort = req.query.sort;
 
@@ -40,18 +38,28 @@ router.get('/', async function(req, res, next) {
     if (tag) {
       filtro.tags = { $all: tag } ;
     }
-    if (precio) {
-      filtro.precio = precio;
-    }else if(min&&max) {
-      if( min > max ) throw Error('El mínimo debe ser mayor que el máximo')
-      filtro.precio = { $gte: min, $lte: max};
-    }else if(min){
-      filtro.precio = { $gte: min };
-    }else if(max){
-      filtro.precio = { $lte: max};
-    }
 
-    const resultado = await Anuncio.lista(filtro, limit, skip, fields, sort, min, max);
+    const regexJusto = new RegExp('^[0-9]*$');
+    const regexRango = new RegExp('^[0-9]*-[0-9]*$');
+    const regexMin = new RegExp('^[0-9]*-$');
+    const regexMax = new RegExp('^-[0-9]*$');
+    if(precio){
+      if (precio.match(regexJusto)) {
+        filtro.precio = precio;
+      }else if(precio.match(regexMin)){
+        precio = precio.replace('-','');
+        filtro.precio = { $gte: precio };
+      }else if(precio.match(regexMax)){
+        precio = precio.replace('-','');
+        filtro.precio = { $lte: precio};
+      }else if(precio.match(regexRango)) {
+        const rango = precio.split('-');
+        console.log(rango);
+        if( parseInt(rango[0]) > parseInt(rango[1]) ) throw Error('El mínimo debe ser mayor que el máximo')
+        filtro.precio = { $gte: rango[0], $lte: rango[1]};
+      }
+    }
+    const resultado = await Anuncio.lista(filtro, limit, skip, fields, sort);
     res.render('index', {title: 'Nodepop', anuncios: resultado});
   } catch (err) {
     next(err);
