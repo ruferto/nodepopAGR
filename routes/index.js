@@ -32,11 +32,13 @@ router.get('/', async function(req, res, next) {
     }
 
     if (venta) {
-      filtro.venta = venta==='true';
+      if(venta==='true' || venta==='false'){
+        filtro.venta = venta==='true';
+      }
     }
 
     if (tag) {
-      filtro.tags = { $all: tag.split(',') } ;
+      filtro.tags = { $all: tag } ;
     }
     if (precio) {
       filtro.precio = precio;

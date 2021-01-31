@@ -32,11 +32,13 @@ router.get('/', async function(req, res, next) {
     }
 
     if (venta) {
-      filtro.venta = venta==='true';
+      if(venta==='true' || venta==='false'){
+        filtro.venta = venta==='true';
+      }
     }
 
     if (tag) {
-      filtro.tags = { $all: tag.split(',') } ;
+      filtro.tags = { $all: tag } ;
     }
     if (precio) {
       filtro.precio = precio;
@@ -96,7 +98,7 @@ router.post('/', async (req, res, next) => {
       return res.status(400).json({ error: 'venta debe ser "true" o "false"' });
     }
     anuncioData.venta =  (anuncioData.venta==="true")  ? true : false;
-    anuncioData.tags = anuncioData.tags.split(',');
+    anuncioData.tags = anuncioData.tags;
 
     console.log(anuncioData)
 
