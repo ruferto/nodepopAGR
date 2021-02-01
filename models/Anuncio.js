@@ -15,9 +15,10 @@ const anuncioSchema = mongoose.Schema({
 });
 
 
+
 anuncioSchema.statics.lista = function(filtro, limit, skip, fields, sort, min, max) {
   
-  const query = Anuncio.find(filtro);
+  const query = Anuncio.find(filtro).collation( { locale: 'en', strength: 2 });
   query.limit(limit);
   query.skip(skip);
   query.select(fields);
