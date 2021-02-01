@@ -1,31 +1,67 @@
+@font-face {
+  font-family: SanchezFont;
+  src: url('../fonts/Sanchezregular.otf');
+}
+
+html {
+  box-sizing: border-box;
+}
+ 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   background-color: rgb(243, 242, 242);
-  padding: 10px 30px 30px 30px;
+  margin: 0;
+  padding: 0;
   font: 14px  Verdana, "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #88aab6;
+  /* color: #88aab6; */
+  color:#26c0ac;
   text-decoration: none;
 }
 
+a:hover{
+  color: #30ebeb;
+}
+
+a:visited{
+  color: #1c8d7e;
+}
 img{
   max-height: 100%;
   object-fit:contain;
 }
 
 .title{
-  font-family: 'GeosansLight', Verdana, 'Geneva';
+  font-family: SanchezFont, Verdana, 'Geneva';
   font-size: 4rem;
-  color:rgb(106, 206, 240);
+  color:#26c0ac;
 }
-title:a{
-  color:red;
+
+.title-container{
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 20px;
+  
+  margin-bottom: 50px;
+  border-bottom: 3px;
+  border-color: #26c0ac;
+  border-style: hidden hidden solid hidden;
 }
+
 .subtitle{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 1rem;
-  color:rgb(70, 138, 161);
+  color:rgb(38, 192, 172);
+  padding-top: 40px;
+  text-align: right;
 }
 
 .ads-container{
@@ -51,6 +87,16 @@ title:a{
   width: 200px;
 }
 
+.ad-container:hover{
+  /* transform: translate(0px, -10px); */
+  -webkit-box-shadow: 0px 7px 21px 5px rgba(0, 0, 0, .2);; 
+    box-shadow: 0px 7px 21px 5px rgba(0, 0, 0, .2);;
+    /* border-radius: 0px 0px 0px 0px; */
+    transform: scale(1.05);
+    transition: box-shadow .2s ease;
+    transition: transform .1s ease-in-out;
+}
+
 .img-container{
   display: flex;
   justify-content: center;
@@ -61,6 +107,7 @@ title:a{
 
 .ad-title{
   font-size: 1.1rem;
+  text-align: center;
 }
 
 .precio{
