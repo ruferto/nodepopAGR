@@ -82,13 +82,10 @@ img{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   background-color: white;
   border-radius: 10px;
   margin-bottom: 2rem;
-  margin-left: 1rem;
   padding: 1rem;
-  position: relative;
   width: 200px;
 }
 
@@ -131,6 +128,12 @@ img{
   /* width: 100%; */
 }
 
+.first{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -150,9 +153,10 @@ img{
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
+  padding-top: 7px;
   border: 1px solid #888;
   border-radius: 10px;
-  width: 40%; /* Could be more or less, depending on screen size */
+  width: 45%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -197,12 +201,21 @@ img{
 
 form{
   display: flex;
-  font-size: .9rem;
+  font-size: 1rem;
   flex-direction: column;
 }
 
 .form-input{
   font-size: 1.2rem;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: lightgray;
+  border-width: 1px;
+  padding:.5rem;
+}
+
+label{
+  padding: 1rem .5rem .3rem;
 }
 
 .form2{
