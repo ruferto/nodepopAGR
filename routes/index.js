@@ -16,7 +16,7 @@ router.get('/', async function(req, res, next) {
     const tag = req.query.tag;
     const limit = parseInt(req.query.limit);
     const skip = parseInt(req.query.start);
-    const fields = req.query.fields;
+    const fields = null;
     const sort = req.query.sort;
 
     const filtro = {};
@@ -63,6 +63,31 @@ router.get('/', async function(req, res, next) {
     res.render('index', {title: 'Nodepop', anuncios: resultado});
   } catch (err) {
     next(err);
+  }
+});
+
+
+// POST
+// Crear un Anuncio
+router.post('/', async (req, res, next) => {
+  try {
+    
+    let anuncioData = req.body;
+    anuncioData.tags=anuncioData.tags.split(',');
+    
+    for(let i=0; i<anuncioData.tags.length; i++){
+      anuncioData.tags[i]=anuncioData.tags[i].trim();
+    }
+
+    const anuncio = new Anuncio(anuncioData);
+
+    await anuncio.save();
+
+    const resultado = await Anuncio.lista();
+    res.render('index', {title: 'Nodepop', anuncios: resultado});
+
+  } catch (error) {
+    next(error);
   }
 });
 

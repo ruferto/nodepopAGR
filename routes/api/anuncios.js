@@ -107,9 +107,7 @@ router.post('/', async (req, res, next) => {
     }
     anuncioData.venta =  (anuncioData.venta==="true")  ? true : false;
     anuncioData.tags = anuncioData.tags;
-
-    console.log(anuncioData)
-
+    
     const anuncio = new Anuncio(anuncioData);
 
     const anuncioCreado = await anuncio.save();

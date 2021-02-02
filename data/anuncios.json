@@ -31,11 +31,11 @@
   "precio": 50,
   "foto": "boxee.png",
   "tags": [
-    "lifestyle",
+    "hogar",
     "tv"
   ]
 },{
-  "nombre": "Groo Adventurer",
+  "nombre": "Groo #25",
   "venta": true,
   "precio": 14.5,
   "foto": "groo.jpg",
@@ -107,4 +107,23 @@
   "precio": 14.2,
   "venta": true,
   "foto": "lampara.jpg"
+},{
+  "tags": [
+    "lifestyle",
+    "movil"
+  ],
+  "nombre": "Fairphone",
+  "precio": 299.95,
+  "venta": true,
+  "foto": "fairphone.png"
+},{
+  "tags": [
+    "lifestyle",
+    "decoracion",
+    "trabajo"
+  ],
+  "nombre": "Bombilla",
+  "precio": 5.75,
+  "venta": false,
+  "foto": "bombilla.jpg"
 }]
