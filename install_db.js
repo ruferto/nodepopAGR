@@ -28,6 +28,7 @@ mongoose.connection.once('open', () => {
         collection.insertMany(anunciosJSON, function(err, result) {
           try {
             console.log(`Se han insertado ${anunciosJSON.length} documentos en la colección`);
+            process.exit(0);
           } catch (error) {
             console.error(err);
           }
@@ -42,5 +43,3 @@ mongoose.connect('mongodb://localhost/anuncios', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
-
-setTimeout(()=>{ process.exit(0); }, 800);
