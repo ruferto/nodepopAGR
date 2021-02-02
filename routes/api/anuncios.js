@@ -73,7 +73,13 @@ router.get('/tags', async function(req, res, next) {
 
   try {
     const resultado = await Anuncio.tags();
-    res.json(resultado);
+    let aux=[];
+    for(let i=0; i<resultado.length;i++) {
+      aux[i]={};
+      aux[i].tag=resultado[i]._id;
+      aux[i].numOfArticles=resultado[i].numOfArticles;
+    }
+    res.json(aux);
   } catch (err) {
     next(err);
   }
