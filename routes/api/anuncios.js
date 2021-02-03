@@ -55,7 +55,7 @@ router.get('/', async function(req, res, next) {
       }else if(precio.match(regexRango)) {
         const rango = precio.split('-');
         console.log(rango);
-        if( parseInt(rango[0]) > parseInt(rango[1]) ) throw Error('El mínimo debe ser mayor que el máximo')
+        if( parseInt(rango[0]) > parseInt(rango[1]) ) throw Error('El mínimo debe ser mayor que el máximo');
         filtro.precio = { $gte: rango[0], $lte: rango[1]};
       }
     }
@@ -108,11 +108,10 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const anuncioData = req.body;
-    if(anuncioData.venta!="true" && anuncioData.venta!="false"){
+    if(anuncioData.venta!='true' && anuncioData.venta!='false'){
       return res.status(400).json({ error: 'venta debe ser "true" o "false"' });
     }
-    anuncioData.venta =  (anuncioData.venta==="true")  ? true : false;
-    anuncioData.tags = anuncioData.tags;
+    anuncioData.venta =  (anuncioData.venta==='true')  ? true : false;
     
     const anuncio = new Anuncio(anuncioData);
 

@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "cross-env PORT=3000 NODE_ENV=development DEBUG=nodeapi:* nodemon",
-    "installDB": "node install_db.js"
+    "installDB": "node install_db.js",
+    "repaso" : "./node_modules/.bin/eslint ./routes/** ./views/** app.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
     "mongoose": "^5.11.14",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "eslint": "^7.19.0"
   }
 }
