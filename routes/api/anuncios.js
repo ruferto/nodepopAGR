@@ -78,6 +78,17 @@ router.get('/tags', async function(req, res, next) {
   }
 });
 
+// GET /api/tags
+// Obtener lista de tags
+router.get('/tagschart', async function(req, res, next) {
+
+  try {
+    res.json( { tags: await Anuncio.tagsChart() } );
+  } catch (err) {
+    next(err);
+  }
+});
+
 // GET /api/anuncios:id
 // Obtener un Anuncio
 router.get('/:id', async (req, res, next) => {

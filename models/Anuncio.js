@@ -31,6 +31,26 @@ anuncioSchema.statics.tags = function() {
   return query.exec();
 }
 
+anuncioSchema.statics.tagsChart = function() {
+  
+  const query = Anuncio.aggregate(
+    [{ $project : {
+        tags : 1,
+        numOfArticles: 1
+    }},
+    { $unwind : "$tags" },
+    {
+      $group: {
+        _id: "$tags",
+        numOfArticles:{$sum:1}
+      }
+    }, 
+    { $sort : { numOfArticles : -1 } }]
+  );
+
+  return query.exec();
+}
+
 // creamos el modelo con el esquema definido
 const Anuncio = mongoose.model('Anuncio', anuncioSchema);
 
