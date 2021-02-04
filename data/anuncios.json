@@ -63,6 +63,16 @@
     "motor"
   ]
 },{
+  "tags":[
+    "lifestyle",
+    "hogar",
+    "decoracion"
+    ],
+    "nombre":"Estantería",
+    "precio":18,
+    "venta":false,
+    "foto":"estanteria.jpg"
+},{
   "nombre": "Roomba",
   "venta": false,
   "precio": 200,
@@ -126,4 +136,23 @@
   "precio": 5.75,
   "venta": false,
   "foto": "bombilla.jpg"
+},{
+  "tags":[
+    "lifestyle",
+    "tablet",
+    "trabajo"
+    ],
+    "nombre":"iPad Mini",
+    "precio":199.95,
+    "venta":false,
+    "foto":"ipadmini.png"
+},{
+  "tags":[
+    "alimentacion",
+    "cocina"
+    ],
+    "nombre":"Saco de papas",
+    "precio":5,
+    "venta":true,
+    "foto":"sacopapas.jpg"
 }]
