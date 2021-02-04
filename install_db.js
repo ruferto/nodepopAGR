@@ -20,11 +20,12 @@ mongoose.connection.on('error', err => {
 });
   
 mongoose.connection.once('open', () => {
+  const collection = mongoose.connection.collection('anuncios');
   console.log('Conectado a MongoDB en', mongoose.connection.name);
-  mongoose.connection.dropCollection('anuncios', function(err, result) {
+  collection.deleteMany( function(err, result) {
     try{
       console.log('Colección borrada');
-      const collection = mongoose.connection.collection('anuncios');
+      
       collection.insertMany(anunciosJSON, function(err, result) {
         try {
           console.log(`Se han insertado ${anunciosJSON.length} documentos en la colección`);
@@ -39,7 +40,7 @@ mongoose.connection.once('open', () => {
   });
 });
   
-mongoose.connect('mongodb://localhost/anuncios', {
+mongoose.connect('mongodb://localhost/nodepop', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
