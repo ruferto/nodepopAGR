@@ -80,7 +80,7 @@ router.get('/tags', async function(req, res, next) {
 
 // GET /api/tags
 // Obtener lista de tags
-router.get('/tagschart', async function(req, res, next) {
+router.get('/tags-articles', async function(req, res, next) {
 
   try {
     res.json( { tags: await Anuncio.tagsChart() } );
