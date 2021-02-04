@@ -27,22 +27,7 @@ anuncioSchema.statics.lista = function(filtro, limit, skip, fields, sort, min, m
 }
 
 anuncioSchema.statics.tags = function() {
-  
-  const query = Anuncio.aggregate(
-    [{ $project : {
-        tags : 1,
-        numOfArticles: 1
-    }},
-    { $unwind : "$tags" },
-    {
-      $group: {
-        _id: "$tags",
-        numOfArticles:{$sum:1}
-      }
-    }, 
-    { $sort : { numOfArticles : -1 } }]
-  );
-
+  const query = Anuncio.distinct("tags");
   return query.exec();
 }
 
