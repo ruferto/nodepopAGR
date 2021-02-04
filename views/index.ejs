@@ -15,10 +15,10 @@
     <div class="ads-container">
     <% anuncios.forEach( anuncio => {%>
       <div class="ad-container">
-          <%= (anuncio.venta) ? 'Se vende' : 'Se compra' %>:<br>
-          <span class="ad-title"><b><%= anuncio.nombre %></b></span><br>
+          <%= (anuncio.venta) ? 'Se vende' : 'Se compra' %>:
+          <div class="ad-title"><b><%= anuncio.nombre %></b></div>
           <div class="img-container">
-            <img src="/images/<%= anuncio.foto %>" width="180" alt=<%=anuncio.foto %> /><br>
+            <img src="/images/<%= anuncio.foto %>" alt=<%=anuncio.foto %> /><br>
           </div>
           <span class="precio"><%= anuncio.precio % 1 != 0 ? Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(anuncio.precio) : Intl.NumberFormat('de-DE').format(anuncio.precio)+' €' %></span>
           <span class="tags">Etiquetas: 
@@ -54,7 +54,7 @@
       <input type="text" class="form-input" name="tags" id="tags" placeholder="Separados por comas" required>
       <input type="hidden" value="form" name="form" id="form">
       <br>
-      <button type="submit" class="buttonAdd">Enviar</button>
+      <button type="submit" class="buttonAdd">Publicar</button>
   </form>
   </div>
 
