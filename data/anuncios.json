@@ -167,12 +167,12 @@
     "venta":true,
     "foto":"enterprise.png"
 },{
-      "tags":[
-        "lifestyle",
-        "deporte"
-        ],
-        "nombre":"Patines",
-        "precio":32,
-        "venta":false,
-        "foto":"patines.png"
+  "tags":[
+    "lifestyle",
+    "deporte"
+  ],
+  "nombre":"Patines",
+  "precio":32,
+  "venta":false,
+  "foto":"patines.png"
 }]
