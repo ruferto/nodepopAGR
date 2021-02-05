@@ -16,7 +16,7 @@
     <% anuncios.forEach( anuncio => {%>
       <div class="ad-container">
           <%= (anuncio.venta) ? 'Se vende' : 'Se compra' %>:
-          <div class="ad-title"><b><%= anuncio.nombre %></b></div>
+          <div class="ad-name"><b><%= anuncio.nombre %></b></div>
           <div class="img-container">
             <img src="/images/<%= anuncio.foto %>" alt=<%=anuncio.foto %> /><br>
           </div>
