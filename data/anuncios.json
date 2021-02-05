@@ -155,4 +155,24 @@
     "precio":5,
     "venta":true,
     "foto":"sacopapas.jpg"
+},{
+  "tags":[
+    "modelismo",
+    "nerd",
+    "star trek",
+    "decoracion"
+    ],
+    "nombre":"Maqueta Enterprise",
+    "precio":50,
+    "venta":true,
+    "foto":"enterprise.png"
+},{
+      "tags":[
+        "lifestyle",
+        "deporte"
+        ],
+        "nombre":"Patines",
+        "precio":32,
+        "venta":false,
+        "foto":"patines.png"
 }]
