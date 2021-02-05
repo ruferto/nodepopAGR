@@ -1,9 +1,11 @@
 # nodepopAGR
 
-## Iniciar base de datos
+## Inicializar la base de datos
 Para ejecutar el script para iniciar la base de datos escribimos:
 
 `npm run installDB`
+
+o bien ejecutar directamente `install_db.js` en el directorio base de la aplicación con `node install_db.js`.
 
 Una vez creados los registros, ya podemos arrancar la aplicación con:
 
@@ -14,7 +16,7 @@ Desarrollo: `npm run dev`
 ## API
 El servicio API se encuentra en http://localhost:3000/api/anuncios
 
-La ruta principal dará como resultado un json con todos los anuncios disponibles. Ejemplo:
+La ruta principal dará como resultado un json con todos los anuncios disponibles. Ejemplo de un solo artículo:
 
 `{"tags":["lifestyle","motor"],"_id":"601c78699d85b60a20602e87","nombre":"Bicicleta","venta":true,"precio":230.15,"foto":"bici.jpg"}`
 
@@ -41,6 +43,8 @@ Ejemplos de cada uno:
 - `10-` Valores mayores o iguales a 10.
 - `-100` Valores menores o iguales a 100.
 - `10` El precio es 10.
+
+El mínimo debe ir antes del máximo. valores como `100-10` lanzarán un error.
 
 Para buscar por más de un tag, se pasarán tantos parámetros tag como número de ellos haya.
 
