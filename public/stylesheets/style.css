@@ -224,6 +224,7 @@ label{
   width:100%;
 }
 
+/* Estilo del select tomado de https://css-tricks.com/styling-a-select-like-its-2019/ */
 .select-css {
   display: block;
   font-size: 15px;
