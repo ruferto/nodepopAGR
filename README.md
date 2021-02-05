@@ -1,13 +1,13 @@
 # nodepopAGR
 
 ## Inicializar la base de datos
-Para ejecutar el script para iniciar la base de datos escribimos:
+Para ejecutar el script para inicializar la base de datos escribimos:
 
 `npm run installDB`
 
 o bien ejecutar directamente `install_db.js` en el directorio base de la aplicación con `node install_db.js`.
 
-Una vez creados los registros, ya podemos arrancar la aplicación con:
+Una vez creados los documentos, ya podemos arrancar la aplicación con:
 
 Producción: `npm run start`
 
@@ -48,15 +48,15 @@ El mínimo debe ir antes del máximo. valores como `100-10` lanzarán un error.
 
 Para buscar por más de un tag, se pasarán tantos parámetros tag como número de ellos haya.
 
-La venta debe ser `'true'` para artículos en venta o `'false'` para artículos buscados.
+La venta debe ser `'true'` para artículos en venta o `'false'` para artículos buscados. Cualquier otro valor lanzará un error.
 
 Por ejemplo, la petición:
 
-http://localhost:3000/api/anuncios/?nombre=i&tag=lifestyle&precio=100-1500&start=0&limit=2&sort=precio&fields=nombre%20precio-_id
+http://localhost:3000/api/anuncios/?nombre=i&tag=lifestyle&precio=100-1500&start=0&limit=2&sort=precio&fields=nombre%20precio
 
 Daría como resultado:
 
-`[{"_id":"601c78699d85b60a20602e96","nombre":"iPad Mini"},{"_id":"601c78699d85b60a20602e89","nombre":"iMac"}]`
+`[{"_id":"601d52580466bb05ae34e6f7","nombre":"iPad Mini","precio":199.95},{"_id":"601d52580466bb05ae34e6ea","nombre":"iMac","precio":1090}]`
 
 La ruta *http://localhost:3000/api/anuncios/tags* devuelve un json con la lista de tags de todos los artículos y http://localhost:3000/api/anuncios/tags-articles devuelve un json con todos los tags junto al número de artículos que lo llevan.
 
@@ -66,4 +66,4 @@ Mediante post pueden añadirse artículos pasándole a http://localhost:3000/api
 
 En http://localhost:3000/ pueden verse todos los artículos disponibles, además de admitir búsquedas mediante get con parámetros en querystring (los mismos que en la API).
 
-En la parte superior derecha de la página hay un botón con el que se muestra un pequeño formulario con el que añadir nuevos artículos.
+En la parte superior derecha de la página hay un botón, que al pulsarlo, muestra un pequeño formulario con el que añadir nuevos artículos.
