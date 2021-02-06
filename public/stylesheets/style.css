@@ -186,6 +186,7 @@ img{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1rem;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .buttonAdd:hover{
