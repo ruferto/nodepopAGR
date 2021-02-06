@@ -55,7 +55,7 @@ router.get('/', async function(req, res, next) {
       }else if(precio.match(regexRango)) {
         const rango = precio.split('-');
         console.log(rango);
-        if( parseInt(rango[0]) > parseInt(rango[1]) ) throw Error('El mínimo debe ser mayor que el máximo');
+        if( parseInt(rango[0]) > parseInt(rango[1]) ) next(Error('El mínimo debe ser mayor que el máximo'));
         filtro.precio = { $gte: rango[0], $lte: rango[1]};
       }
     }
