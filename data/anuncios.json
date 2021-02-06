@@ -100,6 +100,15 @@
   "venta": true,
   "foto": "opelcorsa.jpg"
 },{
+  "tags":[
+    "trabajo",
+    "coleccionismo"
+  ],
+  "nombre":"Amstrad CPC 464",
+  "precio":120,
+  "venta":true,
+  "foto":"amstrad.png"
+},{
   "tags": [
     "trabajo",
     "motor"
