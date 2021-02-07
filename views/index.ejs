@@ -12,6 +12,37 @@
         <div><button id="myBtn" class="buttonAdd"><b>+</b> Añadir anuncio</button></div>
       </div>
     </div>
+    <div>
+      <% filtro.sort %>
+      <div class="form-container">
+        <form class="search-form" action='' method="GET">
+          <div>
+
+            <label for="searchName" >Nombre</label>
+            <input type="text" name="nombre" id="nombre" value="<%= filtro.nombre ? filtro.nombre.$regex.replace('^','') :'' %>" placeholder="Comienza por...">
+            <label for="precio" >Precio</label>
+            <input type="text" name="precio" id="precio" size="5"  value="<%= precio ? precio :'' %>">
+            <label for="tags" >Etiquetas</label>
+            <input type="text" name="tag" id="tag" value="<%= tag ? tag :'' %>" placeholder="Separadas por comas">
+            <label for="sort" >Orden</label>
+            <select name="sort">
+              <option value="" selected>-------</option>
+              <option value="nombre" <% if(sort && sort==='nombre'){ %> selected <% } %>>Nombre</option>
+              <option value="precio" <% if(sort && sort==='precio'){ %> selected <% } %>>Precio</option>
+            </select>
+            <label for="start" >Saltar</label>
+            <input type="number" min="0" class="search-numbers" name="start" id="start" value="<%= skip ? skip :'' %>" >
+            <label for="limit" >Límite</label>
+            <input type="number" min="0" class="search-numbers" name="limit" id="limit" value="<%= limit ? limit :'' %>">
+            <button class="button-search" type="submit">Buscar</button>
+          </div>
+          
+          <div>
+            
+          </div>
+        </form>
+      </div>
+    </div>
     <div class="ads-container">
     <% anuncios.forEach( anuncio => {%>
       <div class="ad-container">
@@ -44,10 +75,10 @@
     <form action="" method="POST">
 
       <div class="first"><label for="nombre"><br>Nombre</label><span class="close">&times;</span></div>
-      <input type="text" name="nombre" class="form-input" id="nombre" placeholder="Artículo" required>
+      <input type="text" name="nombre" class="form-input-add" id="nombre" placeholder="Artículo" required>
       <label for="precio">Precio</label>
       <div class="form2">
-        <input type="number" step="0.01" min="0" name="precio" id="precio" class="form-input" placeholder="0,00" required>
+        <input type="number" step="0.01" min="0" name="precio" id="precio" class="form-input-add" placeholder="0,00" required>
         <select class="select-css" name="venta" id="venta">
           <option value="true" selected>Vender</option>
           <option value="false">Comprar</option>
@@ -55,7 +86,7 @@
       </div>
       <input type="hidden" name="foto" id="foto" value="none.png">
       <label for="tags">Tags</label>
-      <input type="text" class="form-input" name="tags" id="tags" placeholder="Separados por comas" required>
+      <input type="text" class="form-input-add" name="tags" id="tags" placeholder="Separados por comas" required>
       <input type="hidden" value="form" name="form" id="form">
       <br>
       <button type="submit" class="buttonAdd">Publicar</button>
