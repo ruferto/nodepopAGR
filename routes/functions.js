@@ -37,7 +37,7 @@ const filtering = function(req, res, next, isJsonRequest){
     }
 
     const regexJusto = new RegExp('^[0-9]*\.?[0-9]*?$');
-    const regexRango = new RegExp('^[0-9]*\.?[0-9]*?-[0-9]*\.?[0-9]*?$$');
+    const regexRango = new RegExp('^[0-9]*\.?[0-9]*?-[0-9]*\.?[0-9]*?$');
     const regexMin = new RegExp('^[0-9]*\.?[0-9]*?-$');
     const regexMax = new RegExp('^-[0-9]*\.?[0-9]*?$');
     if(precio){
