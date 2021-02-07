@@ -33,7 +33,6 @@ const filtering = function(req, res, next, isJsonRequest){
           tagAux = tagAux.trim();
           tag.push(tagAux);
         })
-        console.log("cambiado "+tag)
       }
       filtro.tags = { $all: tag } ;
     }
