@@ -103,7 +103,7 @@ img{
 .img-container{
   display: flex;
   justify-content: center;
-
+  align-self: center;
   height: 200px;
   width: 180px;
 }
@@ -111,6 +111,7 @@ img{
 .ad-name{
   font-size: 1.1rem;
   /* text-align: center; */
+  height: 2.2rem;
 }
 
 .precio{
