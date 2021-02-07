@@ -3,7 +3,7 @@ const filtering = function(req, res, next, isJsonRequest){
     let precio = req.query.precio;
     const id = req.query.id;
     const venta = req.query.venta;
-    const tag = req.query.tag;
+    let tag = req.query.tag;
     const limit = parseInt(req.query.limit);
     const skip = parseInt(req.query.start);
     const fields = req.query.fields;
@@ -26,6 +26,13 @@ const filtering = function(req, res, next, isJsonRequest){
     }
 
     if (tag) {
+      if(!Array.isArray(tag) && tag.indexOf(',')!=-1){
+        const aux = tag.split(',');
+        aux.forEach( tagAux => {
+          tagAux = tagAux.trim();
+          tag = tagAux;
+        })
+      }
       filtro.tags = { $all: tag } ;
     }
 

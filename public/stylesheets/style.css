@@ -50,7 +50,7 @@ img{
   background-color: white;
   padding: 20px;
   
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   border-bottom: 3px;
   border-color: #26c0ac;
   border-style: hidden hidden solid hidden;
@@ -178,7 +178,7 @@ img{
   cursor: pointer;
 }
 
-.buttonAdd{
+.buttonAdd, .button-search{
   background-color: white;
   border-color: #109c8a;
   border-radius: 20px;
@@ -190,32 +190,49 @@ img{
   cursor: pointer;
 }
 
-.buttonAdd:hover{
+.button-search{
+  font-size: .8rem;
+}
+
+.buttonAdd:hover, .button-search:hover{
   
   background-color: #109c8a;
   color: white;
 }
 
-.buttonAdd:active{
+.buttonAdd:active, .button-search:active{
   background-color: white;
   color: #109c8a;
   transform: scale(.9);
   transition: transform .1s ease-in-out;
 }
 
-form{
+form-add{
   display: flex;
   font-size: 1rem;
   flex-direction: column;
 }
 
-.form-input{
+.form-container{
+  display: flex;
+  flex-direction: row;
+  font-family: SanchezFont, Verdana;
+  justify-content: flex-end;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+.form-input-add{
   font-size: 1.2rem;
   border-radius: 5px;
   border-style: solid;
   border-color: lightgray;
   border-width: 1px;
   padding:.5rem;
+}
+
+.search-numbers{
+  width:3rem;
 }
 
 label{
