@@ -11,7 +11,7 @@ router.get('/', async function(req, res, next) {
 
   try {
     const filtering = require('../functions');
-    const {filtro, limit, skip, fields, sort} = filtering(req);
+    const {filtro, limit, skip, fields, sort} = filtering(req, res, next, true);
     const resultado = await Anuncio.lista(filtro, limit, skip, fields, sort);
     res.json(resultado);
   } catch (err) {
@@ -51,7 +51,7 @@ router.get('/:id', async (req, res, next) => {
     const anuncio = await Anuncio.findOne({ _id: _id });
 
     if (!anuncio) {
-      return res.status(404).json({ error: 'not found' });
+      return res.status(404).json({ error: 'No se encuentra' });
     }
     res.json({ result: anuncio });
 
@@ -66,7 +66,7 @@ router.post('/', async (req, res, next) => {
   try {
     const anuncioData = req.body;
     if(anuncioData.venta!='true' && anuncioData.venta!='false'){
-      return res.status(400).json({ error: 'venta debe ser "true" o "false"' });
+      return res.status(400).json({ error: 'Venta debe ser "true" o "false"' });
     }
     anuncioData.venta =  (anuncioData.venta==='true')  ? true : false;
     

@@ -1,4 +1,4 @@
-const filtering = function(req){
+const filtering = function(req, res, next, isJsonRequest){
     const nombre = req.query.nombre;
     let precio = req.query.precio;
     const id = req.query.id;
@@ -44,8 +44,20 @@ const filtering = function(req){
         filtro.precio = { $lte: precio};
       }else if(precio.match(regexRango)) {
         const rango = precio.split('-');
-        if( parseInt(rango[0]) > parseInt(rango[1]) )  next(Error('El mínimo debe ser mayor que el máximo'));
+        if( parseInt(rango[0]) > parseInt(rango[1]) ){
+          if(isJsonRequest){
+            res.status(400).json( { error: 'El mínimo debe ser mayor que el máximo' });
+          }else{
+            next(Error('El mínimo debe ser mayor que el máximo'));
+          }
+        }
         filtro.precio = { $gte: rango[0], $lte: rango[1]};
+      }else{
+        if(isJsonRequest){
+          res.status(400).json( { error: 'Formato de rango de precio no reconocido' });
+        }else{
+          next(Error('Formato de rango de precio no reconocido'));
+        }
       }
     }
 
