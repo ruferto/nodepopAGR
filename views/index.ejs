@@ -21,7 +21,7 @@
             <label for="searchName" >Nombre</label>
             <input type="text" name="nombre" id="nombre" value="<%= filtro.nombre ? filtro.nombre.$regex.replace('^','') :'' %>" placeholder="Comienza por...">
             <label for="precio" >Precio</label>
-            <input type="text" name="precio" id="precio" size="5"  value="<%= precio ? precio :'' %>">
+            <input type="text" name="precio" id="precio" size="5"  value="<%= precio ? precio :'' %>" placeholder="0,00">
             <label for="tags" >Etiquetas</label>
             <input type="text" name="tag" id="tag" value="<%= tag ? tag :'' %>" placeholder="Separadas por comas">
             <label for="sort" >Orden</label>

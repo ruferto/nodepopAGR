@@ -48,6 +48,7 @@ const filtering = function(req, res, next, isJsonRequest){
       }else if(precio.match(regexMin)){
         precio = precio.replace('-','');
         filtro.precio = { $gte: parseFloat(precio) };
+        console.log(filtro.precio);
       }else if(precio.match(regexMax)){
         precio = precio.replace('-','');
         filtro.precio = { $lte: parseFloat(precio)};
