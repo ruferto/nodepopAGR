@@ -28,10 +28,12 @@ const filtering = function(req, res, next, isJsonRequest){
     if (tag) {
       if(!Array.isArray(tag) && tag.indexOf(',')!=-1){
         const aux = tag.split(',');
+        tag=[];
         aux.forEach( tagAux => {
           tagAux = tagAux.trim();
-          tag = tagAux;
+          tag.push(tagAux);
         })
+        console.log("cambiado "+tag)
       }
       filtro.tags = { $all: tag } ;
     }
