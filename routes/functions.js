@@ -33,7 +33,6 @@ const filtering = function(req){
           tagAux = tagAux.trim();
           tag.push(tagAux);
         })
-        console.log("cambiado "+tag)
       }
       filtro.tags = { $all: tag } ;
     }
@@ -48,6 +47,7 @@ const filtering = function(req){
       }else if(precio.match(regexMin)){
         precio = precio.replace('-','');
         filtro.precio = { $gte: precio };
+
       }else if(precio.match(regexMax)){
         precio = precio.replace('-','');
         filtro.precio = { $lte: precio};
