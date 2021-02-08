@@ -22,7 +22,7 @@ router.get('/', async function(req, res, next) {
       res.locals.tag = tags;
     }
     const filtering = require('./functions');
-    const {filtro, limit, skip, fields, sort} = filtering(req, res, next, false);
+    const {filtro, limit, skip, fields, sort} = filtering(req);
     const resultado = await Anuncio.lista(filtro, limit, skip, fields, sort);
     res.render('index', {title: 'Nodepop', anuncios: resultado, filtro, limit, skip, sort});
   } catch (err) {
