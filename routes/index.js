@@ -9,22 +9,58 @@ router.get('/', async function(req, res, next) {
 
   try {
 
-    res.locals.precio=req.query.precio;
-    if(!Array.isArray(req.query.tag))
-    {
-      res.locals.tag = req.query.tag;
-    }else{
-      let tags = '';
-      req.query.tag.forEach( tag => {
-        tags+=tag+', ';
-      })
-      tags=tags.substring(0, tags.length-2);
-      res.locals.tag = tags;
+    const nombre = req.query.nombre;
+    let precio = req.query.precio;
+    const id = req.query.id;
+    const venta = req.query.venta;
+    const tag = req.query.tag;
+    const limit = parseInt(req.query.limit);
+    const skip = parseInt(req.query.start);
+    const fields = null;
+    const sort = req.query.sort;
+
+    const filtro = {};
+
+    if (nombre) {
+      filtro.nombre = { $regex: `^${nombre}`, $options: 'i' };
     }
-    const filtering = require('./functions');
-    const {filtro, limit, skip, fields, sort} = filtering(req, res, next, false);
+
+    if (id) {
+      filtro._id = id;
+    }
+
+    if (venta) {
+      if(venta==='true' || venta==='false'){
+        filtro.venta = venta==='true';
+      }
+    }
+
+    if (tag) {
+      filtro.tags = { $all: tag } ;
+    }
+
+    const regexJusto = new RegExp('^[0-9]*$');
+    const regexRango = new RegExp('^[0-9]*-[0-9]*$');
+    const regexMin = new RegExp('^[0-9]*-$');
+    const regexMax = new RegExp('^-[0-9]*$');
+    if(precio){
+      if (precio.match(regexJusto)) {
+        filtro.precio = precio;
+      }else if(precio.match(regexMin)){
+        precio = precio.replace('-','');
+        filtro.precio = { $gte: precio };
+      }else if(precio.match(regexMax)){
+        precio = precio.replace('-','');
+        filtro.precio = { $lte: precio};
+      }else if(precio.match(regexRango)) {
+        const rango = precio.split('-');
+        console.log(rango);
+        if( parseInt(rango[0]) > parseInt(rango[1]) ) throw Error('El mínimo debe ser mayor que el máximo');
+        filtro.precio = { $gte: rango[0], $lte: rango[1]};
+      }
+    }
     const resultado = await Anuncio.lista(filtro, limit, skip, fields, sort);
-    res.render('index', {title: 'Nodepop', anuncios: resultado, filtro, limit, skip, sort});
+    res.render('index', {title: 'Nodepop', anuncios: resultado});
   } catch (err) {
     next(err);
   }
