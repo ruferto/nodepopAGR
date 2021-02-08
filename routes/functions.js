@@ -37,31 +37,30 @@ const filtering = function(req, res, next, isJsonRequest){
       }
       filtro.tags = { $all: tag } ;
     }
+    const regexJusto = new RegExp('^[0-9]*$');
+    const regexRango = new RegExp('^[0-9]*-[0-9]*$');
+    const regexMin = new RegExp('^[0-9]*-$');
+    const regexMax = new RegExp('^-[0-9]*$');
 
-    const regexJusto = new RegExp('^[0-9]*\.?[0-9]*?$');
-    const regexRango = new RegExp('^[0-9]*\.?[0-9]*?-[0-9]*\.?[0-9]*?$');
-    const regexMin = new RegExp('^[0-9]*\.?[0-9]*?-$');
-    const regexMax = new RegExp('^-[0-9]*\.?[0-9]*?$');
     if(precio){
-      precio=precio.replace(',','.');
       if (precio.match(regexJusto)) {
-        filtro.precio = parseFloat(precio);
+        filtro.precio = precio;
       }else if(precio.match(regexMin)){
         precio = precio.replace('-','');
-        filtro.precio = { $gte: parseFloat(precio) };
+        filtro.precio = { $gte: precio };
       }else if(precio.match(regexMax)){
         precio = precio.replace('-','');
-        filtro.precio = { $lte: parseFloat(precio)};
+        filtro.precio = { $lte: precio};
       }else if(precio.match(regexRango)) {
         const rango = precio.split('-');
-        if( parseFloat(rango[0]) > parseFloat(rango[1]) ){
+        if( parseInt(rango[0]) > parseInt(rango[1]) ){
           if(isJsonRequest){
             res.status(400).json( { error: 'El mínimo debe ser mayor que el máximo' });
           }else{
             next(Error('El mínimo debe ser mayor que el máximo'));
           }
         }
-        filtro.precio = { $gte: parseFloat(rango[0]), $lte: parseFloat(rango[1])};
+        filtro.precio = { $gte: rango[0], $lte: rango[1]};
       }else{
         if(isJsonRequest){
           res.status(400).json( { error: 'Formato de rango de precio no reconocido' });
