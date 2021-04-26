@@ -66,4 +66,4 @@ Mediante post pueden añadirse artículos pasándole a http://localhost:3000/api
 
 En http://localhost:3000/ pueden verse todos los artículos disponibles, además de admitir búsquedas mediante get con parámetros en querystring (los mismos que en la API).
 
-En la parte superior derecha de la página hay un botón, que al pulsarlo, muestra un pequeño formulario con el que añadir nuevos artículos, y debajo hay una barra de búsqueda.
+En la parte superior derecha de la página hay un botón, que al pulsarlo, muestra un pequeño formulario con el que añadir nuevos artículos.

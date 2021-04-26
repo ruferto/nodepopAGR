@@ -16,6 +16,7 @@ const anuncioSchema = mongoose.Schema({
 
 
 
+// eslint-disable-next-line no-unused-vars
 anuncioSchema.statics.lista = function(filtro, limit, skip, fields, sort, min, max) {
   
   const query = Anuncio.find(filtro).collation( { locale: 'en', strength: 2 });
@@ -24,24 +25,24 @@ anuncioSchema.statics.lista = function(filtro, limit, skip, fields, sort, min, m
   query.select(fields);
   query.sort(sort);
   return query.exec();
-}
+};
 
 anuncioSchema.statics.tags = function() {
-  const query = Anuncio.distinct("tags");
+  const query = Anuncio.distinct('tags');
   return query.exec();
-}
+};
 
 anuncioSchema.statics.tagsChart = function() {
   
   const query = Anuncio.aggregate(
     [{ $project : {
-        tags : 1,
-        numOfArticles: 1
+      tags : 1,
+      numOfArticles: 1
     }},
-    { $unwind : "$tags" },
+    { $unwind : '$tags' },
     {
       $group: {
-        _id: "$tags",
+        _id: '$tags',
         numOfArticles:{$sum:1}
       }
     }, 
@@ -49,7 +50,7 @@ anuncioSchema.statics.tagsChart = function() {
   );
 
   return query.exec();
-}
+};
 
 // creamos el modelo con el esquema definido
 const Anuncio = mongoose.model('Anuncio', anuncioSchema);

@@ -1,5 +1,4 @@
 'use strict';
-const mongoose = require('mongoose');
 
 let anunciosJSON;
 
@@ -13,34 +12,38 @@ fs.readFile('./data/anuncios.json', 'utf8', (err, data) => {
   }
 });
 
+// eslint-disable-next-line no-unused-vars
+const { mongoose, connectMongoose, Usuario, Anuncio } = require('./models');
 
-mongoose.connection.on('error', err => {
-  console.log('Error de conexión', err);
-  process.exit(1);
-});
-  
-mongoose.connection.once('open', () => {
-  const collection = mongoose.connection.collection('anuncios');
-  console.log('Conectado a MongoDB en', mongoose.connection.name);
-  collection.deleteMany( function(err, result) {
-    try{
-      console.log('Colección borrada');
-      
-      collection.insertMany(anunciosJSON, function(err, result) {
-        try {
-          console.log(`Se han insertado ${anunciosJSON.length} documentos en la colección`);
-          mongoose.connection.close();
-        } catch (error) {
-          console.error(err);
-        }
-      });
-    }catch(err){
-      console.error(err);
+main().catch(err => console.error(err));
+
+async function main() {
+
+  await initUsuarios();
+  await initAnuncios();
+  mongoose.connection.close();
+    
+
+}
+
+async function initAnuncios() {
+  const { deletedCount } = await Anuncio.deleteMany();
+  console.log(`Eliminados ${deletedCount} anuncios.`);
+
+  const result = await Anuncio.insertMany(anunciosJSON);
+  console.log(`Insertados ${result.length} anuncio${result.length > 1 ? 's' : ''}.`);
+}
+
+async function initUsuarios() {
+  const { deletedCount } = await Usuario.deleteMany();
+  console.log(`Eliminados ${deletedCount} usuarios.`);
+
+  const result = await Usuario.insertMany(
+    {
+      email: 'admin@example.com',
+      password: await Usuario.hashPassword('1234')
     }
-  });
-});
-  
-mongoose.connect('mongodb://localhost/nodepop', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+  );
+  console.log(`Insertados ${result.length} usuario${result.length > 1 ? 's' : ''}.`);
+}
+

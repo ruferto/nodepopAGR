@@ -1,0 +1,16 @@
+{
+	"Sale": "Se vende",
+	"Buy": "Se compra",
+	"Tags":  {
+		"one": "Etiqueta",
+		"other": "Etiquetas"
+	},
+	"Add Advert": "Añadir anuncio",
+	"Happily Sell & Buy": "Compraventa a go-go",
+	"Name": "Nombre",
+	"Price": "Precio",
+	"Article": "Artículo",
+	"Publish": "Publicar",
+	"Separated by commas": "Separadas por comas",
+	"Language": "Idioma"
+}
