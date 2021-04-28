@@ -1,4 +1,4 @@
-const filtering = function(req, next){
+const filtering = function (req, next) {
   const nombre = req.query.nombre;
   let precio = req.query.precio;
   const id = req.query.id;
@@ -20,33 +20,33 @@ const filtering = function(req, next){
   }
 
   if (venta) {
-    if(venta==='true' || venta==='false'){
-      filtro.venta = venta==='true';
+    if (venta === 'true' || venta === 'false') {
+      filtro.venta = venta === 'true';
     }
   }
 
   if (tag) {
-    filtro.tags = { $all: tag } ;
+    filtro.tags = { $all: tag };
   }
   const regexJusto = new RegExp('^[0-9]*$');
   const regexRango = new RegExp('^[0-9]*-[0-9]*$');
   const regexMin = new RegExp('^[0-9]*-$');
   const regexMax = new RegExp('^-[0-9]*$');
 
-  if(precio){
+  if (precio) {
     if (precio.match(regexJusto)) {
       filtro.precio = precio;
-    }else if(precio.match(regexMin)){
-      precio = precio.replace('-','');
+    } else if (precio.match(regexMin)) {
+      precio = precio.replace('-', '');
       filtro.precio = { $gte: precio };
-
-    }else if(precio.match(regexMax)){
-      precio = precio.replace('-','');
-      filtro.precio = { $lte: precio};
-    }else if(precio.match(regexRango)) {
+    } else if (precio.match(regexMax)) {
+      precio = precio.replace('-', '');
+      filtro.precio = { $lte: precio };
+    } else if (precio.match(regexRango)) {
       const rango = precio.split('-');
-      if( parseInt(rango[0]) > parseInt(rango[1]) )   next(Error('El mínimo debe ser mayor que el máximo'));
-      filtro.precio = { $gte: rango[0], $lte: rango[1]};
+      if (parseInt(rango[0]) > parseInt(rango[1]))
+        next(Error('El mínimo debe ser mayor que el máximo'));
+      filtro.precio = { $gte: rango[0], $lte: rango[1] };
     }
   }
 

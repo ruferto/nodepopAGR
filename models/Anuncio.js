@@ -3,23 +3,30 @@
 const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
 
-const anuncioSchema = mongoose.Schema({
-  nombre: { type: String, index: true },
-  precio: { type: Number, index:true },
-  venta: { type: Boolean, index:true},
-  foto: { type: String },
-  tags: [{type: String }]
-
-}, {
-  collection: 'anuncios'
-});
-
-
+const anuncioSchema = mongoose.Schema(
+  {
+    nombre: { type: String, index: true },
+    precio: { type: Number, index: true },
+    venta: { type: Boolean, index: true },
+    foto: { type: String },
+    tags: [{ type: String }],
+  },
+  {
+    collection: 'anuncios',
+  }
+);
 
 // eslint-disable-next-line no-unused-vars
-anuncioSchema.statics.lista = function(filtro, limit, skip, fields, sort, min, max) {
-  
-  const query = Anuncio.find(filtro).collation( { locale: 'en', strength: 2 });
+anuncioSchema.statics.lista = function (
+  filtro,
+  limit,
+  skip,
+  fields,
+  sort,
+  min,
+  max
+) {
+  const query = Anuncio.find(filtro).collation({ locale: 'en', strength: 2 });
   query.limit(limit);
   query.skip(skip);
   query.select(fields);
@@ -27,27 +34,28 @@ anuncioSchema.statics.lista = function(filtro, limit, skip, fields, sort, min, m
   return query.exec();
 };
 
-anuncioSchema.statics.tags = function() {
+anuncioSchema.statics.tags = function () {
   const query = Anuncio.distinct('tags');
   return query.exec();
 };
 
-anuncioSchema.statics.tagsChart = function() {
-  
-  const query = Anuncio.aggregate(
-    [{ $project : {
-      tags : 1,
-      numOfArticles: 1
-    }},
-    { $unwind : '$tags' },
+anuncioSchema.statics.tagsChart = function () {
+  const query = Anuncio.aggregate([
+    {
+      $project: {
+        tags: 1,
+        numOfArticles: 1,
+      },
+    },
+    { $unwind: '$tags' },
     {
       $group: {
         _id: '$tags',
-        numOfArticles:{$sum:1}
-      }
-    }, 
-    { $sort : { numOfArticles : -1 } }]
-  );
+        numOfArticles: { $sum: 1 },
+      },
+    },
+    { $sort: { numOfArticles: -1 } },
+  ]);
 
   return query.exec();
 };
