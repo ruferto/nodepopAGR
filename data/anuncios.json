@@ -1,63 +1,63 @@
 [{
-  "nombre": "Bicicleta",
-  "venta": true,
-  "precio": 230.15,
-  "foto": "bici.jpg",
+  "name": "Bicicleta",
+  "sale": true,
+  "price": 230.15,
+  "photo": "bici.jpg",
   "tags": [
     "lifestyle",
     "motor"
   ]
 },{
-  "nombre": "iPhone 3GS",
-  "venta": false,
-  "precio": 50,
-  "foto": "iphone.png",
+  "name": "iPhone 3GS",
+  "sale": false,
+  "price": 50,
+  "photo": "iphone.png",
   "tags": [
     "lifestyle",
     "movil"
   ]
 },{
-  "nombre": "iMac",
-  "venta": true,
-  "precio": 1090,
-  "foto": "imac.png",
+  "name": "iMac",
+  "sale": true,
+  "price": 1090,
+  "photo": "imac.png",
   "tags": [
     "lifestyle",
     "trabajo"
   ]
 },{
-  "nombre": "Boxee Box",
-  "venta": false,
-  "precio": 50,
-  "foto": "boxee.png",
+  "name": "Boxee Box",
+  "sale": false,
+  "price": 50,
+  "photo": "boxee.png",
   "tags": [
     "hogar",
     "tv"
   ]
 },{
-  "nombre": "Groo #25",
-  "venta": true,
-  "precio": 14.5,
-  "foto": "groo.jpg",
+  "name": "Groo #25",
+  "sale": true,
+  "price": 14.5,
+  "photo": "groo.jpg",
   "tags": [
     "comic",
     "coleccionismo"
   ]
 },{
-  "nombre": "Megadrive",
-  "venta": false,
-  "precio": 80,
-  "foto": "megadrive.jpg",
+  "name": "Megadrive",
+  "sale": false,
+  "price": 80,
+  "photo": "megadrive.jpg",
   "tags": [
     "lifestyle",
     "gaming",
     "coleccionismo"
   ]
 },{
-  "nombre": "Tesla",
-  "venta": true,
-  "precio": 46000,
-  "foto": "tesla.png",
+  "name": "Tesla",
+  "sale": true,
+  "price": 46000,
+  "photo": "tesla.png",
   "tags": [
     "lifestyle",
     "motor"
@@ -68,15 +68,15 @@
     "hogar",
     "decoracion"
     ],
-    "nombre":"Estantería",
-    "precio":18,
-    "venta":false,
-    "foto":"estanteria.jpg"
+    "name":"Estantería",
+    "price":18,
+    "sale":false,
+    "photo":"estanteria.jpg"
 },{
-  "nombre": "Roomba",
-  "venta": false,
-  "precio": 200,
-  "foto": "roomba.png",
+  "name": "Roomba",
+  "sale": false,
+  "price": 200,
+  "photo": "roomba.png",
   "tags": [
     "lifestyle",
     "trabajo"
@@ -86,85 +86,85 @@
     "lifestyle",
     "motor"
   ],
-  "nombre": "Moto",
-  "precio": 1600,
-  "venta": false,
-  "foto": "moto.jpg"
+  "name": "Moto",
+  "price": 1600,
+  "sale": false,
+  "photo": "moto.jpg"
 },{
   "tags": [
     "lifestyle",
     "motor"
   ],
-  "nombre": "Opel Corsa",
-  "precio": 2001.8,
-  "venta": true,
-  "foto": "opelcorsa.jpg"
+  "name": "Opel Corsa",
+  "price": 2001.8,
+  "sale": true,
+  "photo": "opelcorsa.jpg"
 },{
   "tags":[
     "trabajo",
     "coleccionismo"
   ],
-  "nombre":"Amstrad CPC 464",
-  "precio":120,
-  "venta":true,
-  "foto":"amstrad.png"
+  "name":"Amstrad CPC 464",
+  "price":120,
+  "sale":true,
+  "photo":"amstrad.png"
 },{
   "tags": [
     "trabajo",
     "motor"
   ],
-  "nombre": "Tractor",
-  "precio": 19000,
-  "venta": true,
-  "foto": "tractor.jpg"
+  "name": "Tractor",
+  "price": 19000,
+  "sale": true,
+  "photo": "tractor.jpg"
 },{
   "tags": [
     "lifestyle",
     "decoracion"
   ],
-  "nombre": "Lámpara",
-  "precio": 14.2,
-  "venta": true,
-  "foto": "lampara.jpg"
+  "name": "Lámpara",
+  "price": 14.2,
+  "sale": true,
+  "photo": "lampara.jpg"
 },{
   "tags": [
     "lifestyle",
     "movil",
     "modular"
   ],
-  "nombre": "Fairphone",
-  "precio": 299.95,
-  "venta": true,
-  "foto": "fairphone.png"
+  "name": "Fairphone",
+  "price": 299.95,
+  "sale": true,
+  "photo": "fairphone.png"
 },{
   "tags": [
     "lifestyle",
     "decoracion",
     "trabajo"
   ],
-  "nombre": "Bombilla",
-  "precio": 5.75,
-  "venta": false,
-  "foto": "bombilla.jpg"
+  "name": "Bombilla",
+  "price": 5.75,
+  "sale": false,
+  "photo": "bombilla.jpg"
 },{
   "tags":[
     "lifestyle",
     "tablet",
     "trabajo"
     ],
-    "nombre":"iPad Mini",
-    "precio":199.95,
-    "venta":false,
-    "foto":"ipadmini.png"
+    "name":"iPad Mini",
+    "price":199.95,
+    "sale":false,
+    "photo":"ipadmini.png"
 },{
   "tags":[
     "alimentacion",
     "cocina"
     ],
-    "nombre":"Saco de papas",
-    "precio":5,
-    "venta":true,
-    "foto":"sacopapas.jpg"
+    "name":"Saco de papas",
+    "price":5,
+    "sale":true,
+    "photo":"sacopapas.jpg"
 },{
   "tags":[
     "modelismo",
@@ -172,17 +172,17 @@
     "star trek",
     "decoracion"
     ],
-    "nombre":"Maqueta Enterprise",
-    "precio":50,
-    "venta":true,
-    "foto":"enterprise.png"
+    "name":"Maqueta Enterprise",
+    "price":50,
+    "sale":true,
+    "photo":"enterprise.png"
 },{
   "tags":[
     "lifestyle",
     "deporte"
   ],
-  "nombre":"Patines",
-  "precio":32,
-  "venta":false,
-  "foto":"patines.png"
+  "name":"Patines",
+  "price":32,
+  "sale":false,
+  "photo":"patines.png"
 }]

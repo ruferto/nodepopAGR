@@ -2,10 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 const Anuncio = require('../../models/Anuncio');
+const jwtAuth = require('../../lib/jwtAuth');
 
 /* GET /api/Anuncios */
 // Lista de Anuncios
-router.get('/', async function (req, res, next) {
+router.get('/', jwtAuth, async function (req, res, next) {
   try {
     const filtering = require('../functions');
     const { filtro, limit, skip, fields, sort } = filtering(req, next);
@@ -39,6 +40,7 @@ router.get('/tags-articles', async function (req, res, next) {
 
 // GET /api/anuncios:id
 // Obtener un Anuncio
+// eslint-disable-next-line no-unused-vars
 router.get('/:id', async (req, res, next) => {
   try {
     const _id = req.params.id;

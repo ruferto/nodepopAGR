@@ -12,5 +12,7 @@
 	"Article": "Article",
 	"Publish": "Publish",
 	"Separated by commas": "Separated by commas",
-	"Language": "Language"
+	"Language": "Language",
+	" Article": " Article",
+	" Separated by commas": " Separated by commas"
 }

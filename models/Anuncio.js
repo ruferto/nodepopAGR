@@ -5,10 +5,10 @@ mongoose.set('useCreateIndex', true);
 
 const anuncioSchema = mongoose.Schema(
   {
-    nombre: { type: String, index: true },
-    precio: { type: Number, index: true },
-    venta: { type: Boolean, index: true },
-    foto: { type: String },
+    name: { type: String, index: true },
+    price: { type: Number, index: true },
+    sale: { type: Boolean, index: true },
+    photo: { type: String },
     tags: [{ type: String }],
   },
   {
@@ -22,9 +22,9 @@ anuncioSchema.statics.lista = function (
   limit,
   skip,
   fields,
-  sort,
-  min,
-  max
+  sort
+  // min,
+  // max
 ) {
   const query = Anuncio.find(filtro).collation({ locale: 'en', strength: 2 });
   query.limit(limit);

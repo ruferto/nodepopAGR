@@ -1,7 +1,7 @@
 {
 	"Sale": "Se vende",
 	"Buy": "Se compra",
-	"Tags":  {
+	"Tags": {
 		"one": "Etiqueta",
 		"other": "Etiquetas"
 	},
@@ -12,5 +12,7 @@
 	"Article": "Artículo",
 	"Publish": "Publicar",
 	"Separated by commas": "Separadas por comas",
-	"Language": "Idioma"
+	"Language": "Idioma",
+	" Article": " Article",
+	" Separated by commas": " Separated by commas"
 }

@@ -36,16 +36,16 @@
   <div class="ads-container">
     <% anuncios.forEach( anuncio=> {%>
       <div class="ad-container">
-        <%= (anuncio.venta) ? __('Sale') : __('Buy') %>:<br>
+        <%= (anuncio.sale) ? __('Sale') : __('Buy') %>:<br>
           <span class="ad-title"><b>
-              <%= anuncio.nombre %>
+              <%= anuncio.name %>
             </b></span><br>
           <div class="img-container">
-            <img src="/images/<%= anuncio.foto %>" width="180" alt=<%=anuncio.foto %> /><br>
+            <img src="/images/<%= anuncio.photo %>" width="180" alt=<%=anuncio.photo %> /><br>
           </div>
           <span class="precio">
-            <%= anuncio.precio % 1 !=0 ? Intl.NumberFormat('de-DE', { style: 'currency' , currency: 'EUR'
-              }).format(anuncio.precio) : Intl.NumberFormat('de-DE').format(anuncio.precio)+' €' %>
+            <%= anuncio.price % 1 !=0 ? Intl.NumberFormat('de-DE', { style: 'currency' , currency: 'EUR'
+              }).format(anuncio.price) : Intl.NumberFormat('de-DE').format(anuncio.price)+' €' %>
           </span>
           <span class="tags">
             <%= __n('Tags', anuncio.tags.length) %>:
@@ -68,17 +68,17 @@
 
       <form action="" method="POST">
 
-        <div class="first"><label for="nombre"><br>
+        <div class="first"><label for="name"><br>
             <%= __('Name') %>
           </label><span class="close">&times;</span></div>
-        <input type="text" name="nombre" class="form-input" id="nombre" placeholder='<%= __(' Article') %>' required>
-        <label for="precio">
+        <input type="text" name="name" class="form-input" id="name" placeholder='<%= __(' Article') %>' required>
+        <label for="price">
           <%= __('Price') %>
         </label>
         <div class="form2">
-          <input type="number" step="0.01" min="0" name="precio" id="precio" class="form-input" placeholder="0,00"
+          <input type="number" step="0.01" min="0" name="price" id="price" class="form-input" placeholder="0,00"
             required>
-          <select class="select-css" name="venta" id="venta">
+          <select class="select-css" name="sale" id="sale">
             <option value="true" selected>
               <%= __('Sale') %>
             </option>
@@ -87,7 +87,7 @@
             </option>
           </select>
         </div>
-        <input type="hidden" name="foto" id="foto" value="none.png">
+        <input type="hidden" name="photo" id="photo" value="none.png">
         <label for="tags">
           <%= __('Tags') %>
         </label>
