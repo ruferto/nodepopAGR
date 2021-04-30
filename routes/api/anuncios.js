@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
+const cote = require('cote');
 
 const Anuncio = require('../../models/Anuncio');
 const jwtAuth = require('../../lib/jwtAuth');
-const resize = require('../../lib/resize');
+//const resize = require('../../lib/resize');
 const upload = require('../../lib/upload');
+const requester = new cote.Requester({ name: 'cliente de moneda' });
 
 //const upload = multer({ dest: 'public/images' });
 
@@ -74,7 +76,12 @@ router.post('/', jwtAuth, upload.single('photo'), async (req, res, next) => {
 
     anuncioData.photo = 'images/' + req.file.filename;
 
-    await resize('public/images/', req.file.filename);
+    //await resize('public/images/', req.file.filename);
+    requester.send({
+      type: 'create thumbnail',
+      path: 'public/images/',
+      filename: req.file.filename,
+    });
 
     const anuncio = new Anuncio(anuncioData);
 
