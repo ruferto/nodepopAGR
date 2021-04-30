@@ -2,7 +2,7 @@
   "name": "Bicicleta",
   "sale": true,
   "price": 230.15,
-  "photo": "bici.jpg",
+  "photo": "images/bici.jpg",
   "tags": [
     "lifestyle",
     "motor"
@@ -11,7 +11,7 @@
   "name": "iPhone 3GS",
   "sale": false,
   "price": 50,
-  "photo": "iphone.png",
+  "photo": "images/iphone.png",
   "tags": [
     "lifestyle",
     "movil"
@@ -20,7 +20,7 @@
   "name": "iMac",
   "sale": true,
   "price": 1090,
-  "photo": "imac.png",
+  "photo": "images/imac.png",
   "tags": [
     "lifestyle",
     "trabajo"
@@ -29,7 +29,7 @@
   "name": "Boxee Box",
   "sale": false,
   "price": 50,
-  "photo": "boxee.png",
+  "photo": "images/boxee.png",
   "tags": [
     "hogar",
     "tv"
@@ -38,7 +38,7 @@
   "name": "Groo #25",
   "sale": true,
   "price": 14.5,
-  "photo": "groo.jpg",
+  "photo": "images/groo.jpg",
   "tags": [
     "comic",
     "coleccionismo"
@@ -47,7 +47,7 @@
   "name": "Megadrive",
   "sale": false,
   "price": 80,
-  "photo": "megadrive.jpg",
+  "photo": "images/megadrive.jpg",
   "tags": [
     "lifestyle",
     "gaming",
@@ -57,7 +57,7 @@
   "name": "Tesla",
   "sale": true,
   "price": 46000,
-  "photo": "tesla.png",
+  "photo": "images/tesla.png",
   "tags": [
     "lifestyle",
     "motor"
@@ -71,12 +71,12 @@
     "name":"Estantería",
     "price":18,
     "sale":false,
-    "photo":"estanteria.jpg"
+    "photo":"images/estanteria.jpg"
 },{
   "name": "Roomba",
   "sale": false,
   "price": 200,
-  "photo": "roomba.png",
+  "photo": "images/roomba.png",
   "tags": [
     "lifestyle",
     "trabajo"
@@ -89,7 +89,7 @@
   "name": "Moto",
   "price": 1600,
   "sale": false,
-  "photo": "moto.jpg"
+  "photo": "images/moto.jpg"
 },{
   "tags": [
     "lifestyle",
@@ -98,7 +98,7 @@
   "name": "Opel Corsa",
   "price": 2001.8,
   "sale": true,
-  "photo": "opelcorsa.jpg"
+  "photo": "images/opelcorsa.jpg"
 },{
   "tags":[
     "trabajo",
@@ -107,7 +107,7 @@
   "name":"Amstrad CPC 464",
   "price":120,
   "sale":true,
-  "photo":"amstrad.png"
+  "photo":"images/amstrad.png"
 },{
   "tags": [
     "trabajo",
@@ -116,7 +116,7 @@
   "name": "Tractor",
   "price": 19000,
   "sale": true,
-  "photo": "tractor.jpg"
+  "photo": "images/tractor.jpg"
 },{
   "tags": [
     "lifestyle",
@@ -125,7 +125,7 @@
   "name": "Lámpara",
   "price": 14.2,
   "sale": true,
-  "photo": "lampara.jpg"
+  "photo": "images/lampara.jpg"
 },{
   "tags": [
     "lifestyle",
@@ -135,7 +135,7 @@
   "name": "Fairphone",
   "price": 299.95,
   "sale": true,
-  "photo": "fairphone.png"
+  "photo": "images/fairphone.png"
 },{
   "tags": [
     "lifestyle",
@@ -145,7 +145,7 @@
   "name": "Bombilla",
   "price": 5.75,
   "sale": false,
-  "photo": "bombilla.jpg"
+  "photo": "images/bombilla.jpg"
 },{
   "tags":[
     "lifestyle",
@@ -155,7 +155,7 @@
     "name":"iPad Mini",
     "price":199.95,
     "sale":false,
-    "photo":"ipadmini.png"
+    "photo":"images/ipadmini.png"
 },{
   "tags":[
     "alimentacion",
@@ -164,7 +164,7 @@
     "name":"Saco de papas",
     "price":5,
     "sale":true,
-    "photo":"sacopapas.jpg"
+    "photo":"images/sacopapas.jpg"
 },{
   "tags":[
     "modelismo",
@@ -175,7 +175,7 @@
     "name":"Maqueta Enterprise",
     "price":50,
     "sale":true,
-    "photo":"enterprise.png"
+    "photo":"images/enterprise.png"
 },{
   "tags":[
     "lifestyle",
@@ -184,5 +184,5 @@
   "name":"Patines",
   "price":32,
   "sale":false,
-  "photo":"patines.png"
+  "photo":"images/patines.png"
 }]

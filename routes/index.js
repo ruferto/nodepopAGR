@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const upload = require('../lib/upload');
+const resize = require('../lib/resize');
 
 const Anuncio = require('../models/Anuncio');
 
@@ -18,14 +20,18 @@ router.get('/', async function (req, res, next) {
 
 // POST
 // Crear un Anuncio
-router.post('/', async (req, res, next) => {
+router.post('/', upload.single('photo'), async (req, res, next) => {
   try {
-    let anuncioData = req.body;
-    anuncioData.tags = anuncioData.tags.split(',');
-
-    for (let i = 0; i < anuncioData.tags.length; i++) {
-      anuncioData.tags[i] = anuncioData.tags[i].trim();
+    const anuncioData = req.body;
+    if (anuncioData.sale != 'true' && anuncioData.sale != 'false') {
+      console.log(req.body);
+      return res.status(400).json({ error: 'sale must be "true" or "false"' });
     }
+    anuncioData.sale = anuncioData.sale === 'true' ? true : false;
+
+    anuncioData.photo = 'images/' + req.file.filename;
+
+    await resize('public/images/', req.file.filename);
 
     const anuncio = new Anuncio(anuncioData);
 
@@ -37,5 +43,25 @@ router.post('/', async (req, res, next) => {
     next(error);
   }
 });
+
+// router.post('/', async (req, res, next) => {
+//   try {
+//     let anuncioData = req.body;
+//     anuncioData.tags = anuncioData.tags.split(',');
+
+//     for (let i = 0; i < anuncioData.tags.length; i++) {
+//       anuncioData.tags[i] = anuncioData.tags[i].trim();
+//     }
+
+//     const anuncio = new Anuncio(anuncioData);
+
+//     await anuncio.save();
+
+//     const resultado = await Anuncio.lista();
+//     res.render('index', { title: 'Nodepop', anuncios: resultado });
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 module.exports = router;

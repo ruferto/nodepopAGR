@@ -41,7 +41,7 @@
               <%= anuncio.name %>
             </b></span><br>
           <div class="img-container">
-            <img src="/images/<%= anuncio.photo %>" width="180" alt=<%=anuncio.photo %> /><br>
+            <img src="<%= anuncio.photo %>" width="180" alt=<%=anuncio.photo %> /><br>
           </div>
           <span class="precio">
             <%= anuncio.price % 1 !=0 ? Intl.NumberFormat('de-DE', { style: 'currency' , currency: 'EUR'
@@ -66,7 +66,7 @@
     <div class="modal-content">
 
 
-      <form action="" method="POST">
+      <form action="/" method="POST" enctype="multipart/form-data">
 
         <div class="first"><label for="name"><br>
             <%= __('Name') %>
@@ -87,13 +87,16 @@
             </option>
           </select>
         </div>
-        <input type="hidden" name="photo" id="photo" value="none.png">
+        <label for="photo">
+          <%= __('Photo') %>
+        </label>
+        <input type="file" name="photo" id="photo" class="form-input" />
         <label for="tags">
           <%= __('Tags') %>
         </label>
         <input type="text" class="form-input" name="tags" id="tags" placeholder='<%= __(' Separated by commas') %>'
         required>
-        <input type="hidden" value="form" name="form" id="form">
+        <!-- <input type="hidden" value="form" name="form" id="form"> -->
         <br>
         <button type="submit" class="buttonAdd">
           <%= __('Publish') %>

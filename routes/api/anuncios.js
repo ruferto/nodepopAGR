@@ -3,6 +3,10 @@ var router = express.Router();
 
 const Anuncio = require('../../models/Anuncio');
 const jwtAuth = require('../../lib/jwtAuth');
+const resize = require('../../lib/resize');
+const upload = require('../../lib/upload');
+
+//const upload = multer({ dest: 'public/images' });
 
 /* GET /api/Anuncios */
 // Lista de Anuncios
@@ -20,7 +24,7 @@ router.get('/', jwtAuth, async function (req, res, next) {
 
 // GET /api/tags
 // Obtener lista de tags
-router.get('/tags', async function (req, res, next) {
+router.get('/tags', jwtAuth, async function (req, res, next) {
   try {
     res.json({ tags: await Anuncio.tags() });
   } catch (err) {
@@ -30,7 +34,7 @@ router.get('/tags', async function (req, res, next) {
 
 // GET /api/tags
 // Obtener lista de tags
-router.get('/tags-articles', async function (req, res, next) {
+router.get('/tags-articles', jwtAuth, async function (req, res, next) {
   try {
     res.json({ tags: await Anuncio.tagsChart() });
   } catch (err) {
@@ -41,7 +45,7 @@ router.get('/tags-articles', async function (req, res, next) {
 // GET /api/anuncios:id
 // Obtener un Anuncio
 // eslint-disable-next-line no-unused-vars
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', jwtAuth, async (req, res, next) => {
   try {
     const _id = req.params.id;
 
@@ -59,13 +63,18 @@ router.get('/:id', async (req, res, next) => {
 
 // POST /api/Anuncios (body)
 // Crear un Anuncio
-router.post('/', async (req, res, next) => {
+router.post('/', jwtAuth, upload.single('photo'), async (req, res, next) => {
   try {
     const anuncioData = req.body;
-    if (anuncioData.venta != 'true' && anuncioData.venta != 'false') {
-      return res.status(400).json({ error: 'venta debe ser "true" o "false"' });
+    if (anuncioData.sale != 'true' && anuncioData.sale != 'false') {
+      console.log(req.body);
+      return res.status(400).json({ error: 'sale must be "true" or "false"' });
     }
-    anuncioData.venta = anuncioData.venta === 'true' ? true : false;
+    anuncioData.sale = anuncioData.sale === 'true' ? true : false;
+
+    anuncioData.photo = 'images/' + req.file.filename;
+
+    await resize('public/images/', req.file.filename);
 
     const anuncio = new Anuncio(anuncioData);
 
