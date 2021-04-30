@@ -6,7 +6,7 @@ const Anuncio = require('../../models/Anuncio');
 const jwtAuth = require('../../lib/jwtAuth');
 //const resize = require('../../lib/resize');
 const upload = require('../../lib/upload');
-const requester = new cote.Requester({ name: 'cliente de moneda' });
+const requester = new cote.Requester({ name: 'thumbnail client' });
 
 //const upload = multer({ dest: 'public/images' });
 
