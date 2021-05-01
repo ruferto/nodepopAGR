@@ -1,5 +1,5 @@
 'use strict';
-const resize = require('../lib/resize');
+const resize = require('./resize');
 
 // Thumbnails generator service
 
@@ -16,11 +16,15 @@ const responder = new cote.Responder({ name: 'thumbnail service' });
 
 // lógica del microservicio
 responder.on('create thumbnail', async (req, done) => {
-  const { path, filename, image } = req;
-  console.log('service:', path, filename, image, Date.now());
+  const { path, filename } = req;
+  console.log('service:', path, filename, Date.now());
 
   // calcular el resultado
   //const result = rates[`${desde}_${hacia}`] * cantidad;
-  await resize(path, filename);
+  try {
+    await resize(path, filename);
+  } catch (error) {
+    console.error(error);
+  }
   done();
 });

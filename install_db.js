@@ -1,5 +1,4 @@
 'use strict';
-
 let anunciosJSON;
 
 const fs = require('fs');

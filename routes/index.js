@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 const upload = require('../lib/upload');
-const resize = require('../lib/resize');
+const cote = require('cote');
 
 const Anuncio = require('../models/Anuncio');
+const requester = new cote.Requester({ name: 'thumbnail client' });
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
@@ -31,7 +32,12 @@ router.post('/', upload.single('photo'), async (req, res, next) => {
 
     anuncioData.photo = 'images/' + req.file.filename;
 
-    await resize('public/images/', req.file.filename);
+    //await resize('public/images/', req.file.filename);
+    requester.send({
+      type: 'create thumbnail',
+      path: 'public/images/',
+      filename: req.file.filename,
+    });
 
     const anuncio = new Anuncio(anuncioData);
 
