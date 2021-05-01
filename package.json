@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "cross-env PORT=3000 NODE_ENV=development DEBUG=nodeapi:* nodemon",
+    "thumbServ": "node microservices/thumbnailService.js",
     "installDB": "node install_db.js",
     "repaso": "./node_modules/.bin/eslint ./routes/** app.js"
   },
