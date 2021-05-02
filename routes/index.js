@@ -10,7 +10,7 @@ const requester = new cote.Requester({ name: 'thumbnail client' });
 router.get('/', async function (req, res, next) {
   try {
     const filtering = require('./functions');
-    const { filtro, limit, skip, fields, sort } = filtering(req);
+    const { filtro, limit, skip, fields, sort } = filtering(req, next);
 
     const resultado = await Anuncio.lista(filtro, limit, skip, fields, sort);
     res.render('index', { title: 'Nodepop', anuncios: resultado });

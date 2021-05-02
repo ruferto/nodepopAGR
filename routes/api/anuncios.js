@@ -58,8 +58,8 @@ router.get('/:id', jwtAuth, async (req, res, next) => {
     }
     res.json({ result: anuncio });
   } catch (err) {
-    return res.json({ error: err });
-    //next(err);
+    return res.json({ error: err.message });
+    // next(err);
   }
 });
 

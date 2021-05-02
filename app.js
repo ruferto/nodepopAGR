@@ -22,8 +22,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API
-app.post('/api/loginJWT', loginController.postJWT);
-app.use('/api/anuncios', require('./routes/api/anuncios'));
+app.post('/api/v1/loginJWT', loginController.postJWT);
+app.use('/api/v1/anuncios', require('./routes/api/anuncios'));
 
 //i18n setup
 const i18n = require('./lib/i18nConfigure');

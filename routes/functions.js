@@ -1,8 +1,8 @@
 const filtering = function (req, next) {
-  const nombre = req.query.nombre;
-  let precio = req.query.precio;
+  const name = req.query.name;
+  let price = req.query.price;
   const id = req.query.id;
-  const venta = req.query.venta;
+  const sale = req.query.sale;
   const tag = req.query.tag;
   const limit = parseInt(req.query.limit);
   const skip = parseInt(req.query.start);
@@ -11,17 +11,19 @@ const filtering = function (req, next) {
 
   const filtro = {};
 
-  if (nombre) {
-    filtro.nombre = { $regex: `^${nombre}`, $options: 'i' };
+  if (name) {
+    filtro.name = { $regex: `^${name}`, $options: 'i' };
   }
 
   if (id) {
     filtro._id = id;
   }
 
-  if (venta) {
-    if (venta === 'true' || venta === 'false') {
-      filtro.venta = venta === 'true';
+  if (sale) {
+    if (sale === 'true' || sale === 'false') {
+      filtro.sale = sale === 'true';
+    } else {
+      return next(Error('Sale field: must be "true" or "false"'));
     }
   }
 
@@ -33,21 +35,22 @@ const filtering = function (req, next) {
   const regexMin = new RegExp('^[0-9]*-$');
   const regexMax = new RegExp('^-[0-9]*$');
 
-  if (precio) {
-    if (precio.match(regexJusto)) {
-      filtro.precio = precio;
-    } else if (precio.match(regexMin)) {
-      precio = precio.replace('-', '');
-      filtro.precio = { $gte: precio };
-    } else if (precio.match(regexMax)) {
-      precio = precio.replace('-', '');
-      filtro.precio = { $lte: precio };
-    } else if (precio.match(regexRango)) {
-      const rango = precio.split('-');
+  if (price) {
+    if (price.match(regexJusto)) {
+      filtro.price = price;
+    } else if (price.match(regexMin)) {
+      price = price.replace('-', '');
+      filtro.price = { $gte: price };
+    } else if (price.match(regexMax)) {
+      price = price.replace('-', '');
+      filtro.price = { $lte: price };
+    } else if (price.match(regexRango)) {
+      const rango = price.split('-');
       if (parseInt(rango[0]) > parseInt(rango[1]))
-        next(Error('El mínimo debe ser mayor que el máximo'));
-      filtro.precio = { $gte: rango[0], $lte: rango[1] };
+        return next(Error('Price field: Maximum must be larger than minimum'));
+      filtro.price = { $gte: rango[0], $lte: rango[1] };
     }
+    console.log(filtro.price);
   }
 
   return { filtro, limit, skip, fields, sort };
