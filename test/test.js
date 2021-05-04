@@ -51,7 +51,7 @@ describe('anuncios', function () {
     });
 
     describe('create an advert with wrong value in "sale" field', function () {
-      it('Should return json with error and 400 status code when sale is not "true" or "false"', function (done) {
+      it('Should return json with error and 400 status code', function (done) {
         product = {
           name: 'coche',
           price: 1000,
@@ -69,7 +69,7 @@ describe('anuncios', function () {
     });
 
     describe('create an advert with missing required field', function () {
-      it('Should return json with error and 400 status code when a required field is missing', function (done) {
+      it('Should return json with error and 400 status code', function (done) {
         product = {
           name: 'coche',
           tags: ['motor'],
@@ -86,7 +86,7 @@ describe('anuncios', function () {
     });
 
     describe('create an advert without token', function () {
-      it('Should return json with error and 401 status code when token is missing', function (done) {
+      it('Should return json with error and 401 status code', function (done) {
         request
           .post('/anuncios')
           .send(product)
