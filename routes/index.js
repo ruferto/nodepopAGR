@@ -28,16 +28,28 @@ router.post('/', upload.single('photo'), async (req, res, next) => {
       console.log(req.body);
       return res.status(400).json({ error: 'sale must be "true" or "false"' });
     }
+
+    if (
+      !anuncioData.name ||
+      !anuncioData.price ||
+      !anuncioData.sale ||
+      !anuncioData.tags
+    ) {
+      return res.status(400).json({ error: 'required field(s) missing' });
+    }
+
     anuncioData.sale = anuncioData.sale === 'true' ? true : false;
 
-    anuncioData.photo = 'images/' + req.file.filename;
+    if (req.file && req.file.mimetype.indexOf('image') != -1) {
+      anuncioData.photo = 'images/' + req.file.filename;
 
-    //await resize('public/images/', req.file.filename);
-    requester.send({
-      type: 'create thumbnail',
-      path: 'public/images/',
-      filename: req.file.filename,
-    });
+      //await resize('public/images/', req.file.filename);
+      requester.send({
+        type: 'create thumbnail',
+        path: 'public/images/',
+        filename: req.file.filename,
+      });
+    }
 
     const anuncio = new Anuncio(anuncioData);
 
