@@ -2,6 +2,7 @@
 'use strict';
 require('dotenv').config();
 
+// eslint-disable-next-line no-unused-vars
 const { response } = require('express');
 //var assert = require('assert');
 let request = require('supertest');
