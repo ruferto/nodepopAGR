@@ -4,7 +4,7 @@ require('dotenv').config();
 
 // eslint-disable-next-line no-unused-vars
 const { response } = require('express');
-//var assert = require('assert');
+var assert = require('assert');
 let request = require('supertest');
 //var app = require('../app.js');
 
@@ -12,7 +12,6 @@ request = request('http://localhost:3000/api/v1');
 const email = process.env.USER_EMAIL;
 const password = process.env.USER_PASSWORD;
 const jwtoken = process.env.VALID_JWT_FOR_TEST;
-//'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwZjc1YTM3M2FjOTA3NGZmYWQ0MDIiLCJpYXQiOjE2MjAxNDMwOTUsImV4cCI6MTYyMDE1MDI5NX0.66K-HEdh2loe4PEXAddAZNF42VdG56Wj9UTkfiDzis4';
 
 let product = {
   name: 'coche',

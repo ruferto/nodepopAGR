@@ -8,7 +8,7 @@
     "thumbServ": "node microservices/thumbnailService.js",
     "installDB": "node install_db.js",
     "repaso": "./node_modules/.bin/eslint ./routes/** app.js",
-    "test": "mocha ./test/test.js"
+    "test": "mocha ./test/app.test.js"
   },
   "repository": {
     "type": "git",
