@@ -41,7 +41,8 @@
               <%= anuncio.name %>
             </b></span><br>
           <div class="img-container">
-            <img src="<%= anuncio.photo %>" width="180" alt=<%=anuncio.photo %> /><br>
+            <img src="<%= anuncio.photo ? anuncio.photo : 'images/none.png' %>" width="180" alt=<%=anuncio.photo %>
+            /><br>
           </div>
           <span class="precio">
             <%= anuncio.price % 1 !=0 ? Intl.NumberFormat('de-DE', { style: 'currency' , currency: 'EUR'
