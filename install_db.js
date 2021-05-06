@@ -1,7 +1,7 @@
 'use strict';
 require('dotenv').config();
 
-let anunciosJSON;
+let advertsJSON;
 
 const fs = require('fs');
 
@@ -9,7 +9,7 @@ fs.readFile('./data/anuncios.json', 'utf8', (err, data) => {
   if (err) {
     console.log(`Error al leer el archivo: ${err}`);
   } else {
-    anunciosJSON = JSON.parse(data);
+    advertsJSON = JSON.parse(data);
   }
 });
 
@@ -26,23 +26,37 @@ async function main() {
 
 async function initAnuncios() {
   const { deletedCount } = await Anuncio.deleteMany();
-  console.log(`Eliminados ${deletedCount} anuncios.`);
-
-  const result = await Anuncio.insertMany(anunciosJSON);
   console.log(
-    `Insertados ${result.length} anuncio${result.length > 1 ? 's' : ''}.`
+    `Eliminado${deletedCount !== 1 ? 's' : ''} ${deletedCount} anuncio${
+      deletedCount !== 1 ? 's' : ''
+    }.`
+  );
+
+  const result = await Anuncio.insertMany(advertsJSON);
+  console.log(
+    `Insertado${result.length !== 1 ? 's' : ''} ${result.length} anuncio${
+      result.length !== 1 ? 's' : ''
+    }.`
   );
 }
 
 async function initUsuarios() {
   const { deletedCount } = await Usuario.deleteMany();
-  console.log(`Eliminados ${deletedCount} usuarios.`);
-
-  const result = await Usuario.insertMany({
-    email: process.env.USER_EMAIL,
-    password: await Usuario.hashPassword(process.env.USER_PASSWORD),
-  });
   console.log(
-    `Insertados ${result.length} usuario${result.length > 1 ? 's' : ''}.`
+    `Eliminado${deletedCount !== 1 ? 's' : ''} ${deletedCount} usuario${
+      deletedCount !== 1 ? 's' : ''
+    }.`
+  );
+
+  const result = await Usuario.insertMany([
+    {
+      email: process.env.USER_EMAIL,
+      password: await Usuario.hashPassword(process.env.USER_PASSWORD),
+    },
+  ]);
+  console.log(
+    `Insertado${result.length !== 1 ? 's' : ''} ${result.length} usuario${
+      result.length !== 1 ? 's' : ''
+    }.`
   );
 }
