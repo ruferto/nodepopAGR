@@ -1,4 +1,6 @@
 'use strict';
+require('dotenv').config();
+
 let anunciosJSON;
 
 const fs = require('fs');
@@ -37,8 +39,8 @@ async function initUsuarios() {
   console.log(`Eliminados ${deletedCount} usuarios.`);
 
   const result = await Usuario.insertMany({
-    email: 'admin@example.com',
-    password: await Usuario.hashPassword('1234'),
+    email: process.env.USER_EMAIL,
+    password: await Usuario.hashPassword(process.env.USER_PASSWORD),
   });
   console.log(
     `Insertados ${result.length} usuario${result.length > 1 ? 's' : ''}.`
