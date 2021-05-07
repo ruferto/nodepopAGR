@@ -16,6 +16,8 @@ Desarrollo: `npm run dev`
 
 Test: `npm run test`
 
+Asímismo, para arrancar el microservicio de creación de thumbnails puede usarse: `npm run thumbServ`
+
 ## API
 
 Todas las operaciones, excepto el login requieren autenticación.
