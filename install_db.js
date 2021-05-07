@@ -19,12 +19,12 @@ const { mongoose, connectMongoose, Usuario, Anuncio } = require('./models');
 main().catch((err) => console.error(err));
 
 async function main() {
-  await initUsuarios();
-  await initAnuncios();
+  await initUsers();
+  await initAdverts();
   mongoose.connection.close();
 }
 
-async function initAnuncios() {
+async function initAdverts() {
   const { deletedCount } = await Anuncio.deleteMany();
   console.log(
     `Eliminado${deletedCount !== 1 ? 's' : ''} ${deletedCount} anuncio${
@@ -40,7 +40,7 @@ async function initAnuncios() {
   );
 }
 
-async function initUsuarios() {
+async function initUsers() {
   const { deletedCount } = await Usuario.deleteMany();
   console.log(
     `Eliminado${deletedCount !== 1 ? 's' : ''} ${deletedCount} usuario${
