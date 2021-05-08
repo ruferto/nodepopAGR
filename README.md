@@ -1,3 +1,7 @@
+Bonus Track: [https://www.npmjs.com/package/splitfilt](https://www.npmjs.com/package/splitfilt)
+
+---
+
 # nodepopAGR
 
 Antes de nada, hay que generar un archivo `.env` en la raiz sigiendo el modelo `.env.example`.
