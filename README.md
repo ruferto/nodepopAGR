@@ -16,7 +16,7 @@ Producción: `npm run start`
 
 Desarrollo: `npm run dev`
 
-Test: `npm run test`
+Test: `npm test`
 
 Asímismo, para arrancar el microservicio de creación de thumbnails puede usarse: `npm run thumbServ`
 
