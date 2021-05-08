@@ -21,10 +21,10 @@ let product = {
   sale: 'true',
 };
 
-describe('anuncios', function () {
+describe('anuncios', function (done) {
   describe('POST', function () {
     describe('login', function () {
-      it('Should return a jwt', function (done) {
+      it('Should return a jwt', function () {
         request
           .post('/loginJWT')
           .send({
@@ -38,6 +38,17 @@ describe('anuncios', function () {
             done
           );
       });
+      it('Should return a json with error when credentials are wrong', function (done) {
+        request
+          .post('/loginJWT')
+          .send({
+            email: 'quack',
+            password: '1111',
+          })
+          .expect('Content-Type', /json/)
+          .expect(401)
+          .expect('{"error":"invalid credentials"}', done);
+      });
     });
     describe('create an advert', function () {
       it('Should return a json and 201 status code', function (done) {
@@ -48,10 +59,7 @@ describe('anuncios', function () {
           .expect('Content-Type', /json/)
           .expect(201, done);
       });
-    });
-
-    describe('create an advert with wrong value in "sale" field', function () {
-      it('Should return json with error and 400 status code', function (done) {
+      it('Should return json with error and 400 status code with wrong value in "sale" field', function (done) {
         product = {
           name: 'coche',
           price: 1000,
@@ -66,10 +74,8 @@ describe('anuncios', function () {
           .expect('{"error":"sale must be \\"true\\" or \\"false\\""}')
           .expect(400, done);
       });
-    });
 
-    describe('create an advert with missing required field', function () {
-      it('Should return json with error and 400 status code', function (done) {
+      it('Should return json with error and 400 status code when missing required field', function (done) {
         product = {
           name: 'coche',
           tags: ['motor'],
@@ -83,10 +89,8 @@ describe('anuncios', function () {
           .expect(/{"error":"required field.*/)
           .expect(400, done);
       });
-    });
 
-    describe('create an advert without token', function () {
-      it('Should return json with error and 401 status code', function (done) {
+      it('Should return json with error and 401 status code when no token provided', function (done) {
         request
           .post('/anuncios')
           .send(product)
@@ -108,21 +112,19 @@ describe('anuncios', function () {
             else done(new Error('It is not an array'));
           });
       });
-    });
 
-    describe('get ads with wrong price range format', function () {
-      it('Should return an json with error and status 500', function (done) {
+      it('Should return an json with error and status 500 when wrong price range format provided', function (done) {
         request
           .get('/anuncios/?price=50-10')
           .set('Authorization', jwtoken)
           .expect('Content-Type', /json/)
-          .expect(/{"error":"/)
+          .expect(
+            '{"error":"Price field: Maximum must be larger than minimum"}'
+          )
           .expect(500, done);
       });
-    });
 
-    describe('get ads with an invalid token', function () {
-      it('Should return an json with error and status 401', function (done) {
+      it('Should return an json with error and status 401 when an invalid token is provided', function (done) {
         request
           .get('/anuncios/')
           .set('Authorization', jwtoken + 'a')
@@ -133,7 +135,7 @@ describe('anuncios', function () {
     });
 
     describe('get tags list', function () {
-      it('Should return json with tags', function (done) {
+      it('Should return json with array of tags', function (done) {
         request
           .get('/anuncios/tags')
           .set('Authorization', jwtoken)
