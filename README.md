@@ -1,5 +1,7 @@
 # nodepopAGR
 
+Antes de nada, hay que generar un archivo `.env` en la raiz sigiendo el modelo `.env.example`.
+
 ## Inicializar la base de datos
 
 Para ejecutar el script para inicializar la base de datos escribimos:
@@ -29,7 +31,7 @@ La ruta principal dará como resultado un json con todos los anuncios disponible
 
 `{"tags":["lifestyle","motor"],"_id":"601c78699d85b60a20602e87","name":"Bicicleta","sale":true,"price":230.15,"photo":"bici.jpg"}`
 
-Para filtrar, se le pueden pasar por querystring al método get los siguientes parámetros referidos a los artículos:
+Para filtrar, se le pueden pasar por el método GET los siguientes parámetros referidos a los artículos:
 
 - name
 - price
@@ -55,11 +57,11 @@ Ejemplos de cada uno:
 - `-100` Valores menores o iguales a 100.
 - `10` El precio es 10.
 
-El mínimo debe ir antes del máximo. valores como `100-10` lanzarán un error.
+El mínimo debe ir antes del máximo. valores como `100-10` devolverán un error.
 
 Para buscar por más de un tag, se pasarán tantos parámetros tag como número de ellos haya.
 
-La venta debe ser `'true'` para artículos en venta o `'false'` para artículos buscados. Cualquier otro valor lanzará un error.
+La venta debe ser `'true'` para artículos en venta o `'false'` para artículos buscados. Cualquier otro valor devolverá un error.
 
 Por ejemplo, la petición:
 
