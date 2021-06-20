@@ -1,3 +1,6 @@
+Despliegue: http://ec2-35-83-17-122.us-west-2.compute.amazonaws.com/
+            http://35.83.17.122
+
 Bonus Track: [https://www.npmjs.com/package/splitfilt](https://www.npmjs.com/package/splitfilt)
 
 ---
@@ -27,7 +30,7 @@ Asímismo, para arrancar el microservicio de creación de thumbnails puede usars
 ## API
 
 Todas las operaciones, excepto el login requieren autenticación.
-Para la autenticación es necesario una petición POST a http://localhost:3000/api/v1//loginJWT con los campos 'email' y 'password'.
+Para la autenticación es necesario una petición POST a http://localhost:3000/api/v1/loginJWT con los campos 'email' y 'password'.
 
 El servicio API se encuentra en http://localhost:3000/api/v1/anuncios
 
