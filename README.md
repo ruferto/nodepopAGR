@@ -1,15 +1,3 @@
-Despliegue:
-
-http://ec2-35-83-17-122.us-west-2.compute.amazonaws.com/
-
-http://35.83.17.122
-
----
-
-Bonus Track: [https://www.npmjs.com/package/splitfilt](https://www.npmjs.com/package/splitfilt)
-
----
-
 # nodepopAGR
 
 Antes de nada, hay que generar un archivo `.env` en la raiz sigiendo el modelo `.env.example`.
